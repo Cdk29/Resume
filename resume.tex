@@ -1,0 +1,608 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\bibliographystyle{unsrt}
+\usepackage[margin=2cm, right=2.5cm, left=2.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5} 
+%\usepackage{showframe} %use the margin parameters
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[nocompress]{cite}
+\bibliographystyle{ieeetr}
+\usepackage{pdfpages}
+
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage{times}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{titletoc}
+\usepackage{calc}
+\usepackage[]{titlesec} 
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage[some]{background}
+\usepackage{listings}
+
+
+
+
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shadows.blur}
+
+
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+
+\definecolor{yourcolor}{HTML}{086A87}
+%\definecolor{yourcolor}{cmyk}{1,.60,0,.40}
+
+\definecolor{yourcolor2}{HTML}{086A87}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{10pt}{}  %gauche %haut de page %chapter-box
+
+
+
+\colorlet{chpnumbercolor}{black}
+\makeatletter
+\let\oldl@chapter\l@chapter
+\def\l@chapter#1#2{\oldl@chapter{#1}{\textcolor{chpnumbercolor}{#2}}}
+\let\old@dottedcontentsline\@dottedtocline
+\def\@dottedtocline#1#2#3#4#5{%
+	\old@dottedcontentsline{#1}{#2}{#3}{#4}{{\textcolor{chpnumbercolor}{#5}}}}
+\makeatother
+
+
+
+
+
+\titleformat{\chapter}[display]
+{\normalfont\color{yourcolor2}}
+{\filleft\Huge\sffamily\bfseries\chaptertitlename\hspace*{2mm}%  %chapter/number distance
+	\begin{tikzpicture}[baseline={([yshift=-.6ex]current bounding box.center)}]
+	\node[fill=yourcolor2,rectangle,text=white] {\thechapter};
+	\end{tikzpicture}}
+{1ex}
+{\titlerule[1.5pt]\vspace*{1ex}\huge\sffamily\itshape}    % epaisseur de la ligne et distance ligne-chapter
+[]
+
+
+
+
+
+\titleformat{name=\chapter,numberless}[display]
+{\normalfont\color{yourcolor2}}
+{}
+{1ex}
+{\vspace*{5ex}\huge\sffamily\itshape}
+[]
+
+
+
+
+
+\newcommand{\printmyminitoc}{          %command to print the acutal minitoc
+	\noindent\hspace{+0cm}              %controle de la box sommaire   
+	\colorlet{chpnumbercolor}{white}%
+	\begin{tikzpicture}
+	\node[rounded corners,align=left,fill=yourcolor2, blur shadow={shadow blur steps=5}, inner sep=5mm]{%
+-		\color{white}%
+		\begin{minipage}{8cm}%minipage trick
+		\printcontents[chapters]{}{1}{}
+		\end{minipage}};
+	\end{tikzpicture}}
+
+
+
+
+
+\begin{document}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%title area
+
+
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=1,
+	contents={\begin{tikzpicture}[remember picture,overlay]
+		\path [fill=white] (current page.west)rectangle (current page.north east);
+		\draw [color=yourcolor, very thick] (5,0)--(5,0.48\paperheight); 
+		\draw [color=yourcolor, very thick] (5,0)--(9.5,0\paperwidth);  %xy  and %xy, relative coordonnees
+		\draw [color=yourcolor, very thick] (5,0)--(-8,0\paperwidth);  %xy  %xy
+		\draw [opacity=0.6, color=yourcolor, line width=9pt] (5,25) circle [radius=12];
+		\draw [opacity=0.4, color=gray, line width=15pt] (11,11) circle [radius=4];
+		\draw [opacity=0.4, color=yourcolor, line width=5pt] (9.6,15) circle [radius=5.9];
+		\draw [opacity=0.6, color=yourcolor, line width=10pt] (11,7) circle [radius=3];
+		\draw [opacity=0.4, color=yourcolor, line width=5pt] (11,2.8) circle [radius=1.4];			
+		\end{tikzpicture}}}
+
+\makeatletter                   
+\def\printauthor{%                  
+	{\large \@author}}          
+\makeatother
+
+\author{% \newline
+	Under the direction of : \     Dr. Shailendra Gupta, \    \\        Pr. Olaf Wolkenhauer, \ \\   SBI Rostock \    \\ \     Pr. Yannick Andéol, \ UPMC \ \\  \vspace{20pt}    Author,\   \\        Etienne Rolland \
+}
+
+\begin{titlepage}
+	\BgThispage
+	\vspace*{0.11\textheight}
+	\noindent
+	\textcolor{yourcolor}{\Huge{Development of a computational \\ \newline  workflow to design a circular \\ \newline microRNA sponge  in the context \\ \newline of RNA therapy,\\ \newline with a focus on melanoma cancer  }}
+	
+	\vspace*{4cm}\par
+	
+	\noindent
+	\begin{minipage}{0.30\linewidth}
+		\begin{flushright}
+			\printauthor
+		\end{flushright}
+	\end{minipage} \hspace{15pt}
+	%
+	\begin{minipage}{0.05\linewidth}       %move the abstract
+		\rule{1pt}{175pt}                   %la barre, epaisseur et longueur
+	\end{minipage} \hspace{-10pt}
+	%
+	\begin{minipage}{0.60\linewidth}
+		\vspace{5pt}
+		\begin{abstract} 
+			This document is a concise presentation of the work accomplished during my master's degree internship at the Rostock SBI department. The project was to develop a computational workflow which design a circular RNA, in order to sponge microRNAs of interest. \\ The core material was the triplexRNA database, a database of cooperative microRNAs. \\
+			After a quick introduction, we will see first how the design script proceed to build the circular RNA. 
+			After this, we will detail of the first workflow and its results, as well as the second workflow. 
+			Finally, the conclusion will discuss the limits of the first and second workflow.
+		\end{abstract}
+	\end{minipage}
+\end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+	
+%\tableofcontents
+\chapter{Introduction}
+\startcontents[chapters]
+\printmyminitoc %print minitoc
+	
+\section{MicroRNAs}
+MicroRNAs are 20-24 nt RNA molecules, which can form a complex with AGO family proteins members, to exert a post-transcriptional repression \cite{network, site, Urich, cancer}.\\
+This repression is exert by a inhibition of the translation's initiation, and 
+eventually, by a messenger RNA destabilization \cite{site, cancer}. \\ 
+The repression is mediated by the binding of the complex microRNA-Ago protein to the target messenger RNA, the complementarity between the microRNA sequence and the messenger RNA beeing the vector of recognition of the messenger RNA target.\\
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{microRNA.png}}
+	\caption{Schematic representation of the binding of a microRNA on a messenger RNA, for a 7mer site. Illustration taken from \cite{Urich}}
+\end{figure}
+In that sequence, the most important is the "seed region" (see the figure above for a schematic representation), a complementarity in this region beeing enought to for the complex to bind the messenger RNA, and most of the time, mandatory. This seed region is located in the 5' region of the microRNA, and could be a 6, 7 or 8mer \cite{site,Urich}. By extension, the seed region is also in the 3' region of the microRNA binding site.
+
+Nonetheless, despite this evidences, the microRNAs' network is still poorly understood \cite{network,cancer}. The reason includes : the functional redundancy of the microRNAs, the lack of clear phenotype when one microRNA is knock-down, the combinational of the repression, etc\cite{network,cancer}. 
+Their levels of expression, like many non coding RNA, is altered in disease, including cancer \cite{cancer}.
+
+\section{MicroRNAs : a paradigm based on cooperativity}
+
+There is experimental evidences for a microRNA cooperativity in the post-transcriptional repression they exert, when their seeds region on the messenger RNA are in close proximity $13\!- \!35$ nt \cite{site, coop}.\\
+ Since this could be an effective way to understand how the microRNAs' network exert its repression, a model based on this cooperativity has been tested in sillico. The model predicted the expression level of p21 in 9 of the 12 tissues considered for the simulation \cite{p21}.
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.8\textwidth]{canonical.png}}
+	\caption{An example of canonical triplex, from the triplexRNA database}
+\end{figure}
+
+The TriplexRNA database is based on this work. Based on a computational workflow to predict them\cite{triplex}, the database provide putative triplexes, triplexes composed by two microRNAs and their mutual messanger RNA target (three RNA molecules for the triplex, nonobsting the AGO proteins). This report will sometimes refer to this database as the "triplex", for convenience purposes.
+
+
+
+\section{Circular RNAs}
+
+Formed by backsplincing\cite{?}, the circular RNA are a class of long non coding RNA.\\
+While the exact nature of their function remains elusive \cite{?, mir7, sponge}, it has been proved that one of them is to "sponge" the microRNAs\cite{mir7,sponge}. \\
+By binding the microRNAs, a circular sponge decoy the microRNAs from their original targets. Since this targets are messenger RNAs, and that the microRNAs exert a repression, the sponge influence the level of expression of the genes regulated by this microRNA, and induce an up-regulation of their traduction \cite{mir7,carcinoma,sponge}.
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.5\textwidth]{sponge.jpg}}
+	\caption{Illustration of the "sponging" capability of the circular RNAs. Illustration taken from\cite{sponge}}
+\end{figure}
+
+This ability to up-regulate the expression of genes, coupled with a long half-life due to their circular shape \cite{sponge}, make them a good candidate as a therapy tools. \\
+
+That could be the case for disease involving a deregulation of microRNAs' level of expression, like in cancer as stated before \cite{cancer}, and their phenotypic consequences in various disease\cite{therapeutics}, or in case the enhancing of traduction of one gene would be suitable.
+
+Some circular RNAs and their absence have also been report to be directly involved in diseases. For example, a circular RNA which sponge miR-9, circMTO1, has been found to be highly  correlated with the prognosis of patient suffering from human hepatocellular carcinoma (HCC) \cite{carcinoma}. Moreover, the circular RNA could suppress HCC progression in vivo\cite{carcinoma}, leading us to think that circular RNAs could be a good therapy tool, once bypassed the usual problems of addressing and delivering of this molecules, common to every RNA therapy\cite{therapeutics}.
+
+
+\section{Context of the work}
+
+The first objective was to develop an executable which design a circular RNA sponge, to upregulate the level of expression of a gene(s) of interest, using the information contained inside the triplexRNA database. This executable could be then integrated into further release of the triplexRNA. This part was done with success, and this concise report will first show how the executable which design the circular RNA works. The executable which can be found here. The procedure to chooses which microRNAs should be sponge is detailed later in the report.\\
+
+A secondary focus was made on the melanoma cancer.
+The main motivation behind this was to extend the previous workflow to upregulate genes of interest, to a workflow to upregulate a pathways of interest.
+ Indeed, the triplexRNA can be query for a list of genes and for pathways (the triplex integrate most of the KEGG pathways), including the KEGG melanoma pathways.\\
+
+The idea was to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway.\\
+
+The choice of the Melanoma cancer have been done because of the potential experimental outcome. For example, the circular RNA sponge could have been tested in cells culture : the experimental design would have been to test if the artificial introduction of the circular RNA would have induced a phenotype reversion of the late stage phenotype toward an early stage phenotype.\\
+  
+The whole workflow and controls are detailed below, and the limits of such a demarch explored inside the conclusion.
+
+
+
+
+\chapter{Results}
+\startcontents[chapters]
+\printmyminitoc %print minitoc
+
+\section{Circular RNA design script}
+
+The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. The procedure to choose which microRNAs to sponge is detailed later.\\
+
+More precisly, the circular RNA design script have to mandatory input :
+\begin{itemize}
+	\item a file  contening the names of the microRNAs that the user want the sponge to decoy from their original target. The names have to be the same than the one in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
+	\item a file containing a priorities for each microRNAs. Basically, the script build the sponge in a recursive way, and add as many binding site as the priority number allocated to each microRNA on each recursion. For example, for a sponge with twice the number of binding site for one microRNAs compare to the other, the file will contain the integer 2 and 1. This file is a txt file with just one integer per line, and have to be in the same order than the microRNAs they refer to.
+
+\end{itemize}
+
+The script will then query the triplexRNA database, using the provided names to get the mimat IDs which identify this microRNA in the database. This ID is then used to query Mirbase, to get the sequence of the microRNA. \\
+
+There is several reasons to this. First of all, while the sequences of the microRNAs are encode inside the triplexRNA database, the orientation of the strand is not indicate (5' and 3' extremity), and this step is then a security control, assuring the sequence of the microRNA is in the right orientation.\\
+
+ Also, the name of some microRNAs can be different between Mirbase and the triplexRNA, depending on their respective update. For example, most of the microRNAs have the mention 5p or 3p in their name, indicating from which part of the hairpin they come from, a mention sometimes absent from the name inside the triplexRNA database. This step is then a disambiguation phase. 
+
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.9\textwidth]{Blank.png}}
+	\caption{Details of the request done by the circular RNA design script.}
+\end{figure}
+
+Once the sequences of the microRNAs are obtain by the circular design script, it will use them to build the most efficient binding site possible for each of the microRNAs. Those building sites, one per microRNAs, will be then repeat on the circular sponge, separated by nucleotides according to another parameter, the distance of cooperativity\cite{coop}. \\
+
+In order to do so, the design script is implemented with rules extract from the scientific literature :
+
+\begin{itemize}
+\item a A is systematically put in first position (in 5') of the microRNA's binding site. There is an overrepresentation of conserved adenosines flanking the seed complementary sites\cite{Aanchor}, among other data suggesting that a site with a A in first position outperform the others one, including the one with a complementary nucleotide to the microRNAs\cite{Urich}. 
+
+\item the seed region (from the 2nd to the 8th nt, cf introduction) is build by inserting complementary nucleotides to the microRNAs' ones, forming a "8-mer" site. See \cite{Urich, site} for further details and representation.
+
+\item a A is put in the ninth position of the binding site, because there is an overrepresentation of conserved adenosines flanking the seed complementary sites\cite{Aanchor}, and because the microRNAs binding sites which perform the best are the ones with a local hight content of Adenine (A) and Uracile (U), over any other variable or predicator \cite{Urich}.
+
+\item the 12th from 10th nucleotides are not complementary to the microRNAs', and U and A if possible. The aim is to avoid any Ago2 mediated cleavage of the circular RNA, cleavage which occur in case of near perfect complementarity between the microRNA sequence and the binding site \cite{cancer}. This nucleotide are U, or A if not possible.
+
+\item the nucleotides from 13 to 16 (included, so four in total) are complementary to the \-microRNAs' one. The reason is that Watson-Crick pairing to four contiguous nucleotides produce an additionnal pairing in 3'\cite{site} and that most downregulation is associated to this additionnal pairing if it start at the 13th position \cite{site}, additionnal downregulation which can be translate as a stronger binding of the microRNA on the binding site\cite{site}.
+		
+	\end{itemize}
+
+As we just mentionned, the microRNAs binding sites which perform the best are the ones with a local hight content of A and U, over any other variable or predicator \cite{Urich}. \\
+This is probably correlated to binding site accessibility, and a low potential of forming a self-interacting secondary structure \cite{Urich}. \\
+To take advantage of this two features, in order to improve the efficiency of the circular RNA sponge, the script design the sponge's sequence with as many U and A as possible. \\ 
+That means that, outside the seed region, where a strict complementarity is required, or in the additional 3' pairing region (cf above), the sequence is write with U or A. \\ A cognate problem is that some proteins target and bind some AU rich sequences, known as AREs \cite{AREs}. However, since this AREs sequences contain some A \cite{AREs}, the safest option is to specify a U prior to an A when writing the sponge's sequence, when no other specific nucleotides is required for complementarity between the sponge and the microRNA. \\
+
+Each binding site is terminated by an additional number of nucleotides, in order to separate its seed from the seed of the following binding site by the distance of cooperativity, as define in \cite{coop}. The distance of cooperativity is the distance between the two seed, distance which insure that the two microRNAs will coopere to bind and exert their translational repression on a messenger RNA \cite{coop}.\\
+The distance of cooperativity is set by default to 17, but can be specified by an additional parameters when running the script.\\
+
+The binding sites for one microRNA are organized in cluster by the design script, considering the observation that Ago2 shuttles between adjacent target and then that neighboring sites could cooperate to retain the Ago2-miRNA complex.\cite{cluster}. \\
+
+During the recursive call, the design script build the clusters by adding as many binding site to the cluster as the priority number allocated to this microRNA. The recursive call is interrupt when the limit size (set by default to 300, but can be specified), is about to be exceeded by the addition of a new binding site.\\
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{circular1(1).jpeg}}
+	\caption{Schema of the circular RNA's construction. During the recursive call, the function add on each cluster of microRNA' binding site, as many binding site as the priority number for this microRNA, until the limit size is about to be exceeded. Please take note that the addition of the binding sites is done in a iterative way.}
+\end{figure}
+
+
+After this, the design script compute the minimum free energy of the circular RNA for every arrangement of clusters of binding sites in the sequence, and select the sequence of the circular RNA with the lowest minimum free energy for the output. \\
+
+
+
+Finaly, a pdf report with the sequence of the circular sponge is output by the design script. This pdf report details and justifies every step of the design to the user (organization of the binding site in cluster, the design rich in U, etc).\\
+This pdf report also provide quality controls in the form of miranda alignments. In this section are exposed the 3 best alignments (if they exists) for each cluster against every human microRNAs. The script is provide with the file mature.fa, a fasta format sequences of all mature miRNA sequences, download from miRbase in may 2017.\\
+
+Each alignments have for title the name of the microRNA performing the alignment, and the name of the microRNA for which the cluster has been design. \\
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.8\textwidth]{Capture.png}}
+	\caption{Example of one of the alignment found in the pdf report.}
+\end{figure}
+
+This allow to check easily if the best alignment is performed by the microRNAs for which the binding site was created, and make sure that the binding site will not be bound by another microRNAs. Or even worse, to ensure that no microRNA is susceptible to trigger a Ago2 mediated cleavage of the sponge.\\
+
+In such case, an override procedure is implement. Providing a txt file with a sequence, the user can redo the whole design process with a binding sequence specified for one or more microRNAs. The construction of the circular sponge is then redo in the same recursive way, except for the creation of the specified binding site, and then the quality control are reperformed and a pdf report is recreated. 
+
+
+Since all the quality control are performed again, this allow the user to refine the construction of the sponge, especially in the case of one miss design, as describe above.\\
+
+Most of the case of competition by another microRNA are due to a U:G wobble, an allowance between a G in the microRNA's sequence and a U in the sequence of the circular RNA (there is a good example in the figure 2.3), the probability of such an event beeing incredibly improved by the design rich in U of the sponge.\\
+
+In that case the pdf output advise to first replace this problematic U by a A, if possible, to keep the low probability of the binding site to form a self secondary structure.\\
+
+
+
+\section{First workflow}
+
+\subsection{Down regulation and translationnal inhibition}
+
+
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{Workflow1.png}}
+	\caption{The structure of the first iteration of the workflow. The retrieving of the genes composing the Melanoma KEGG pathways using a SQL query is th first step and the main characteristic of this iteration}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{forest_prediction}}
+	\caption{Error of classification of the random forest classifier, using a selection of genes inside the KEGG melanoma pathways, selection output by the feature selection approach}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\subfloat[Scatterplot where the distance between sample is a projection of the log2 fold change distance, for Melanoma cancer data, between late melanoma and early melanoma.]{\includegraphics[width=0.49\textwidth]{Rplot_melanoma.pdf}\label{fig:f1}}
+	\hfill
+	\subfloat[Scatterplot where the distance between sample is a projection of the log2 fold change distance, for Colorectal cancer data, between normal adjacent and cancer cells.]{\includegraphics[width=0.49\textwidth]{Rplot_collorectal_cancer.pdf}\label{fig:f2}}
+	\caption{Comparison of the projection fold change distance between melanoma sample and colorectal cancer after a differential expression analysis. The scatterplot of the colorectal cancer show the expected output for this analysis, with a good separation of the two groups.}
+\end{figure}
+
+
+\section{Current workflow}
+
+To illustrate the current workflow, we will create a sponge in the context of a RNA therapy for colorectal cancer, using some of the genes differentially expressed between the normal condition and the tumor condition. Of course, while this reduced set of genes is sufficient to distinguish between the two condition, they are not necessary responsible of the difference in the phenotype. Such a diagnostic would require more investigation, using ontologies and literature. Here we take select them for illustration purpose.\\
+A normal use of the workflow rely on the expertise of the user and that the user provide a set of downregulated genes he is interested in.\\
+
+\subsection{Diffential expression analysis, Colorectal Cancer}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[Projection of the fold change between normal cells and tumor cells for colorectal cancer.
+	]{\includegraphics[width=0.49\textwidth]{Rplot_collorectal_cancer.pdf}\label{fig:f1}}
+	\hfill	
+	\subfloat[Projection of the fold change between normal cells and tumor cells for colorectal cancer, using only the top 12 of the differentially expressed  genes.]{\includegraphics[width=0.49\textwidth]{Rplot_12_genes.pdf}\label{fig:f2}}
+	
+	\caption{Multidimensional scaling plot of distances, using the plotMDS() function from edgeR. In the context of using a reduced number of genes to distinguish between the two conditions (normal adjacent cells and cancerous cells), we observe a good separation with the top 12 of the differentially expressed genes.}
+	
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{cytoscape_output.png}}
+	\caption{Here the cytoscape visualization for 3 downregulated gene in colorectal cancer, compare to normal adjacent cells BEST4 (4 triplexes), LGI1 (20 triplexes), KRT24 (14 triplexes). Here hsa-miR-590-5p is a potent target for the circular RNA design script}
+\end{figure}
+
+\chapter{Conclusion and Perspectives}
+\startcontents[chapters]
+\printmyminitoc %print minitoc
+
+\section{Outcomes}
+
+\subsection{Circular design script}
+The major outcome to this are the two executables which can be found here.
+
+While one is only a local API to query a local instance of the triplexRNA, the other one can be used by anyone and independently from the workflow.
+
+The circular design script can be used to design a circular microRNA sponges, get the quality control and refine the design with the "override" procedure, whether or not the previous workflow has been used to retrieve the microRNAs to be targeted.
+
+While this script can be used separately from the triplexRNA, it's require that the user use the same names as the ones inside the triplexRNA database. 
+
+
+\subsection{Workflow}
+The workflow retrieve all the triplexes involved in the repression of a list of genes passed as input, using the triplexRNA database\cite{triplex}
+
+This workflow provide a output file for a graphical visualization of the cooperation between microRNAs which exert a repression in a cooperative manner on the level of expression of the genes passed as input.
+
+That way the workflow provide a tool to visualize which microRNAs are involved in the most pairs of cooperative microRNAs and whose that the sponging by a circular RNA will affect the most pairs and remove the most repression on the list of genes passed as input.
+
+The workflow finally provide a design script to automatize the construction of a circular RNA to decoy particular microRNAs, outputting a pdf report justifying the key points of the design and providing qualities control.
+
+The design script allow the user to specify parameters of his own interest : the list of microRNAs to be decoy, a list of priority which is an intuitive way to prioritize the sponging of some microRNAs, and a maximum size according to the user synthesis facilities. The size distance between the seed can be specified to adapt to new scientific evidence, or particular wishes of the user.
+
+Finally, the script allow to refine the design of the circular RNA sponge, through a repetition of execution of the design script, with some of or all binding sequence for microRNAs specified, instead of leaving the construction to the the automatic design, coupled with the repetition of the qualities controls. This process is ease by having files as inputs for the design script.
+
+The workflow rely on the triplexRNA database, allow the user to retrieve all the canonical triplexes for a list of genes, to visualize them in a way that allow to find the most important microRNAs using cytoscape, and finally to build a circular RNA to sponge them, and eventually to refine the process. 
+
+
+
+While there is some limits to this workflow (see perspectives below), ...
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.70\textwidth]{Final_Workflow.png}}
+	\caption{Schematic representation of the final workflow}
+\end{figure}
+
+\section{Down-regulation and translationnal inhibition}
+
+A really important point is that a genes negatively regulated by the microRNAs, will not appear as differentially expressed in a RNA-seq : the mRNA will not be degraded, but the transduction of the mRNA will be inhibited.\\
+
+A more pertinent approach would be to investigate directly the microRNAs level of expression, and cross the data with the triplexes referenced inside the tripleRNA database or, more directly, rely on the expertise of the user. Indeed the user can have - through western blot experiments for example -, genes of interest, not down-regulated(?) but for which the translation of the messenger RNA is inhibited.\\
+
+
+\section{cirMOT1 in hepatocellular carcinoma}
+One thing we can wonder is : does the workflow retrieve Mir-9 as a microRNAs to be target with a circular RNA in the case of the carcinoma cancer ?
+
+While there is little to criticize in the demarche exposed in the article (Mir-9 and circMOT1 are clearly identified as responsible for the down expression of p21 and for the inhibition of the repressive effect of Mir-9, respectively), MiR-9 is actually no part of the triplexes involving the CDKN1A messenger RNA. There is several reason which could explain this :
+
+\begin{itemize}
+	
+	
+\item Among the 99 microRNAs identified using miRanda as susceptible to bind cirMOT1, only 20 of them have been screened for specific enrichment after RNA precipitation in vivo, considering that they were previously describe as involved in the hepatocellular carcinoma.
+	
+While this analytic procedure is entirely relevant in the case of a cancer study, right now I would deplore the lack of information about the 80 other ones. Also, while the case of the sponge ciRS-7\cite{mir7} is abundantly cited along the article\cite{carcinoma}, there is no reason to think that most of the natural sponge decoy only one microRNA. The supplementals data of Memczak et al,\cite{mir7} are rich in predicted circular RNAs with a seed match for more than one microRNA family. 
+	 
+\item MiR-9 is over expressed in the hepatocellular carcinoma, and this is why the researcher selected this microRNA, among other, for screening after the RNA precipitation. And in this situation of over expression, low affinity sites for the microRNA (6-nt sites) become occupied and functionnal \cite{mir9}. 
+
+Nonetheless, the triplexRNA database has been construct based on binding site prediction extracted from microRNA.org, in which only binding sites with good conservation and prediction scores were retained \cite{triplex}, binding sites which are assumed to be the functionnal ones in normal circomstances.
+
+That make very likely that the workflow constructing the triplexRNA database does not take into account some microRNAsbinding sites which are functional uniquely in some diseases, and by that, it make possible that some triplexes, specifics to particular disease and associated with specific over expression of some microRNAs, are missing in the triplexRNA database.
+
+\end{itemize}
+
+\section{Visualization of the triplexes}
+
+While Cytoscape provide a comfortable way to visualize the pairs of microRNAs which repress the expression of a set of genes, it can't be run in command line and then can't be part of a pipeline. 
+The choice of cytoscape was done mainly for convenience purpose, and because the author of this document didn't find a Python library which would have allow him to fulfill the function of triplexes' visualization. 
+
+A prospective work for a core installation inside the triplexRNA of the executable which design a circular sponge, to enable the creation of the sponge from a web interface; would be the development of a visualization tools which can be run by a program, and which does not require for the user to run a graphical interface by itself.
+
+\chapter{Material and Methods}
+\startcontents[chapters]
+\printmyminitoc %print minitoc
+
+
+\section{TriplexRNA database}
+
+The TriplexRNA database provide putatives triplexes according to the workflow published here\cite{triplex}, and is available at the following url : https://triplexrna.org/
+
+A triplex is a conformation defined as a messenger RNA and a pair of microRNAs bound on it, in a cooperative manner. 
+
+Two microRNAs are a putative pair of cooperating microRNAs if the seed region of their binding site are separated by a distance of 13-35 nt \cite{coop}
+
+A triplex is supposed functional - meaning : the pair of cooperative microRNAs exert a corepression - if the triplex adopt a conformation called "canonical triplex", discribing a conformation where the two microRNAs bound the messenger RNA without overlap or mutual exclusion, with a preservation of the seed binding for both of the microRNAs.
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=0.5\textwidth]{canonical.png}}
+	\caption{An example of canonical triplex, from the triplexRNA database}
+\end{figure}
+
+The triplex database can be interrogate through the web instance, using a JSON query. The database is also composed by three SQL table :
+
+\begin{itemize}
+	\item A table listing the triplexes for their cognate genes in the mouse. 
+	\item A table listing the triplexes for their cognate genes in the human.
+	\item A table associating genes and their cognate triplexes with a Kyoto Encyclopedia of Genes and Genomes (KEGG) pathways identifier (ID)\cite{KEGG}.
+\end{itemize}
+
+Each of them can be query using MySQL.
+The triplexRNA database which is interrogate with a MySQL request in the script Query Triplex is a local instance, different from the web instance called by the JSON queries (but both contains the same data).
+
+\section{Request of triplexes and gene inside the Melanoma Pathways}
+
+The list of the genes inside the KEGG Melanoma pathway\cite{KEGG} was retrieved by querying the corresponding SQL table for all the genes associated with the KEGG ID of the pathways (hsa05218).
+
+The triplexes for this list of genes was then retrieved using the JSON query for a list of genes, as describe below.
+
+\section{SIF format, output of the JSON query}
+
+The sif format is the input format used for visualization using cytoscape \cite{cytoscape}. 
+
+This format specifies only nodes and interactions and it is written as follow :
+\\
+
+nodeA relationship\_type nodeB \\
+nodeC relationship\_type nodeA \\
+nodeD relationship\_type nodeE nodeF \\
+Which, for the purpose of visualizating the microRNAs involved in the most triplexes, became, as outputted by the executable which retrieve all the triplexes for a list of genes :
+
+microRNAname ID\_of\_the\_triplexes microRNA2name
+
+\section{JSON query of a list of genes}
+
+The script which retrieve the functionnal triplexes take as input the name of a txt file containing the list of genes.
+
+This list is then used to query the triplexRNA database with a JSON query and keep only the functionnal triplexes for each gene. The JSON query retrieve data under the form of JSON dictionnary that the script can then parse. Here an example of JSON query to retrieve all the triplexes associated with CDKN1A :
+
+\lstinputlisting{json.py}
+
+The script also filter the triplexes considered as redundant. The output is wrotte in a sif format, in a separate folder, with a global report.
+
+\section{Filtering of the redondant triplexes}
+
+The redundant triplexes are filtered out considering the following : if a triplex in the list of triplexes associated to a gene has : 
+\begin{itemize}
+	\item the same position of beginning or ending for the microRNA's binding position of one already retained microRNA, for the first microRNA composing the triplex
+	\item or the same position of beginning or ending for the microRNA's binding for the second microRNA composing the triplex, 
+	\item and a name of one microRNA in common with a triplex already retain for the sif output of this gene;
+\end{itemize}
+
+Then this triplex is considered as redundant and ignored for the sif output.
+The triplexRNA database which is interrogated with the MySQL request for the filtering is a local instance, different from the web instance which is the one queried with the JSON request. 
+
+\section{Genes level of expression, Melanoma cancer}
+
+The level of gene expression for the Melanoma cancer used for the differential expression are RNA-seq data, published by the The Cancer Genome Atlas Network (TGCA) \cite{TGCA}, from the project TGCA - Melanoma (SKCM).
+
+The gene expression profiles was measured experimentally using the Illumina HiSeq 2000 RNA Sequencing platform by the University of North Carolina TCGA genome characterization center. This data are level 3 data, meaning that the gene-level transcription estimates are in log2( transformed RSEM normalized count + 1), and have been produced from a cohort of 331 patient \cite{TGCA}.
+
+The level of expression for the genes composing the KEGG melanoma pathways have been download through the Xena browser (http://xena.ucsc.edu/) \cite{Xena}. UCSC's Xena is a data server-based platform that contain functional genomics data and output them in response to request done through a web graphical interface. 
+
+The Xena browser was used to retrieve the level of gene expression for each sample, associated with a phenotype [pathologic\_stage], the categories of phenotypes going from the stage 0 to IV. This indices describe the extent of the cancer. See the pdf from the american joint committee on cancer \cite{joint}
+
+
+\begin{figure}[H]
+	\centering
+	{\includegraphics[width=1\textwidth]{Xena_melanoma.pdf}}
+	\caption{Web visualization of the level of gene expression, associated with the phenotype [pathalogic\_stage]. This levels of expression can be then download.}
+\end{figure}
+
+\section{Colorectal cancer data}
+
+The level of genes expression for the colorectal cancer was extracted from the R package curatedCRCData \cite{curated}, a package providing manually curated data of microarray and RNA-seq data from the TCGA-COAD project.
+
+The level of gene expression are RNA-seq level 3 data, in log2 ( transformed RSEM normalized count + 1), the same format than the RNA - seq data of the TGCA - SKCM project.
+
+\section{Graphical visualization of the cooperation between \\ microRNAs}
+
+The  visualization of the cooperation between microRNAs in a form of graph has been done using Cytoscape\cite{cytoscape}, an open source software for integrating biomolecular interaction networks.
+
+The format used as input to construct the network is the .sif format, cf the SIF format section above.
+
+
+\section{Differential expression analysis for melanoma and colorectal cancer data}
+
+The differential genes expression analysis between early and late melamoma stage has been done using gene-level transcription estimates in log2(x+1) transformed RSEM normalized count, provide by the TGCA-SKCM project, using the Limma package in R \cite{limma}.
+
+After Quantile normalization to equalize the library sizes\cite{limma}, Limma has been used to fit a linear model to the already log 2 - transformed data using an empirical Bayes method\cite{limma}.
+
+The same procedure has been employed for the colorectal cancer data.
+
+
+\section{Randomized Lasso}
+
+The randomized lasso has been used  on the gene-level transcription estimates in log2(x+1) transformed RSEM normalized count, provide by the TGCA in the project SKCM, using the python scikit-learn library\cite{scikit}.
+
+\section{Random Forest}
+
+The Random Forests has been trained using 2500 tree, 0 random state, directly on the gene-level transcription estimates in log2(x+1) transformed RSEM normalized count provide by the TGCA in the project SKCM, using the python scikit-learn library \cite{scikit}.
+The testing set of data has been generate by selecting at random 20 percent of the total data set.
+
+\section{Random Forest Classification Error Plotting}
+
+The plotting of the error of the Random Forest has been done using the python library forestci. 
+
+\section{Minimum Free Energy Calculation and Vizualization}
+
+The Minimum Free Energy Calculation is performed using the tool RNAfold of the package ViennaRNA 2.3.5. \cite{vienna}
+
+\section{MicroRNAs alignments}
+
+The circular design script is provided with a copy of the mature.fa file from the last release of mirbase, downloaded in may2017, containing all the mature microRNAs referenced in the database. 
+
+An alignement using miRanda \cite{Miranda} is performed for each cluster against every human microRNAs, with the options "-noenergy -strict -sc 150". This options restrict the alignements to the ones with a strict alignment in the seed region (positions 2-8) region and eliminate results with little to no biological sense.
+
+\section{Pdf report}
+
+The pdf report is created using the web tool TEXPILE, developed by Martin Scharm. TEXPILE is a web service design to be an online compiler for LaTeX projects. The report is first write in the Tex language by the circular RNA design script. This Tex file is then convert into a pdf file by the TEXPILE tool.
+
+TEXPILE's code is hosted at GitHub: github.com/binfalse/TEXPILE
+
+
+
+\bibliography{bib.bib}
+
+\end{document}  
