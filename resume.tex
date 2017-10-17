@@ -184,16 +184,14 @@ The repression is mediated by the binding of the complex miRISC to the target me
 	{\includegraphics[width=1\textwidth]{microRNA.png}}
 	\caption{Schematic representation of the binding of a microRNA on a messenger RNA, for a 7mer site. Illustration taken from \cite{Urich}}
 \end{figure}
-In that sequence, the most important is the "seed region" (see the figure above for a schematic representation), a complementarity in this region beeing enought to for the complex to bind the messenger RNA, and most of the time, mandatory. This seed region is located in the 5' region of the microRNA, and could be a 6, 7 or 8mer \cite{site,Urich}. By extension, the seed region is also in the 3' region of the microRNA binding site.
+In that sequence, the most important is the "seed region" (see the figure above for a schematic representation), a complementarity in this region being enough to for the complex to bind the messenger RNA, and most of the time, mandatory. This seed region is located in the 5' region of the microRNA, and could be a 6, 7 or 8mer \cite{site,Urich}. By extension, the seed region is also in the 3' region of the microRNA binding site.
 
 Nonetheless, despite this evidences, the microRNAs' network is still poorly understood \cite{network,cancer}. The reason includes : the functional redundancy of the microRNAs, the lack of clear phenotype when one microRNA is knock-down, the combinational of the repression, etc\cite{network,cancer}. 
 Their levels of expression, like many non coding RNA, is altered in disease, including cancer \cite{cancer}.
 
 \section{Inhibition and level of mRNA}
 
-While the description of the mechanism of the translational inhibition above suggest that the levels of microRNA-inhibited mRNAs remain unchanged,
-
-more recent work has demonstrated that the repression of many miRNA targets is frequently associated with their destabilization \cite{cancer}.
+While the description of the mechanism of the translational inhibition above suggest that the levels of microRNA-inhibited mRNAs remain unchanged, more recent work has demonstrated that the repression of many miRNA targets is frequently associated with their destabilization \cite{cancer}.
 
 Micro-array studies of transcript levels in cells and tissues
 in which microRNA levels were experimentally altered, revealed marked changes in the abundance of validated or predicted miRNA targets, consistent with an role for miRNAs in mRNA destabilization \cite{cancer}.
@@ -471,7 +469,7 @@ The script finally compile a latex file online using the web tool TEXPILE. The p
 
 While this script can be used separately from the triplexRNA, it's require that the user use the same names as the ones inside the triplexRNA database\cite{triplex}. 
 
-The code of the circular design script is hosted on Github : https://github.com/Cdk29/circular\_RNA\_design
+The code of the circular design script is hosted on Github : https://github.com/Cdk29/circular\_RNA\_design where an example of the pdf report is provided.
 
 \subsection{Workflow}
 
@@ -496,23 +494,28 @@ Finally, the script allow to refine the design of the circular RNA sponge, throu
 \section{Perspectives}
 \subsection{Down-regulation and translationnal inhibition}
 
-A really important point is that a genes negatively regulated by the microRNAs, will not appear as differentially expressed in a RNA-seq : the mRNA will not be degraded, but the transduction of the mRNA will be inhibited.\\
 
-A more pertinent approach would be to investigate directly the microRNAs level of expression, and cross the data with the triplexes referenced inside the tripleRNA database or, more directly, rely on the expertise of the user. Indeed the user can have - through western blot experiments for example -, genes of interest, not down-regulated(?) but for which the translation of the messenger RNA is inhibited.\\
+A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptionnal level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.
+
+In the first case the genes will not appeared as down regulated in a differential, but the transduction of the mRNA will be inhibited and the gene not expressed.\\,
+
+A other pertinent approach could be the use of or the integration of miRNA-seq data with the data of the triplexRNA, to investigate directly the microRNAs level of expression.\\
+ 
+More directly, relying on the expertise of the user is another approach. The user can have - through western blot experiments for example -, genes of interest which are not necessary differentially expressed, but for which the translation of the messenger RNA is inhibited.\\
 
 \subsection{KEGGs map}
 
-The problem of finding which genes are down-regulated/
+The differential expression analysis was motivated by the problem of finding which genes are down-regulated or repressed in a biological condition of interest.\\
 
-Indeed, the KEGG pathways are only a list of genes inside the triplex RNA, which doesn't tell us which gene should be up-regulated/de-repressed by the circular RNA sponge. A similar information, however, is on the KEGGs map, where the effect of each genes/proteins are indicated.
+Indeed, the KEGG pathways are only encode as a list of genes inside the triplex RNA, which does not tell us which gene are down-regulated or which are post-transcriptionally repressed by microRNAs.\\
 
-Considering this, an other approach will be to used the KEGGs map to select genes of interest and look at the microRNAs.
+A similar information, however, is on the KEGGs map, where the effect of each genes/proteins are indicated. Considering this, an other approach could be to use the KEGGs map to select genes of interest and look at the microRNAs.\\
 
-This is a variation of a feature implemented in the triplexRNA database, which allow a visualization of the mutual target genes for selected microRNA pair, within the KEGG disease pathway. 
+This is a variation of a feature implemented in the triplexRNA database, which allow a visualization of the mutual target genes for selected microRNA pair, within the KEGG disease pathway. \\
 
-But this feature is for two microRNAs only, and by then ignore the relatives importances of microRNAs among all the pairs, nor it can be done in the direction we would need (a selection of genes downregulated on the map towards all the microRNAs pairs).
+But this feature is for two microRNAs only, and by then ignore the relatives importances of microRNAs among all the pairs, nor it can be done in the direction we would need (a selection of genes downregulated on the map towards all the microRNAs pairs).\\
 
-Anyway, a collection of manually drawn map is not the best material to carry such a task, especially in the optics of long maintenance.
+Anyway, a collection of manually drawn map is not the best material to carry such a task, especially in the optic of a long maintenance.
  
 \subsection{Visualization of the triplexes}
 
