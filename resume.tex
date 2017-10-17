@@ -248,11 +248,6 @@ The choice of the Melanoma cancer have been done because of the potential experi
   
 The whole workflow and controls are detailed below, and the limits of such a demarch explored inside the conclusion.
 
-\section{Why differential expression analysis}
-
-The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
-
-
 
 \chapter{Results}
 \startcontents[chapters]
@@ -432,11 +427,28 @@ A normal use of the workflow rely on the expertise of the user and that the user
 	
 \end{figure}
 
+\subsection{An executable to query the triplexRNA}
+
+The executable which was used to retrived the list of genes inside a pathways, and the canonical triplexes for this genes, was modified to retrieve the canonical triplexes for a list of genes past as input in a text file.
+
+The script retrieve all the triplexes involving this genes, using a JSON query for each genes from the list of genes (see material and method), with a filtering of the redundant triplexes (see material and method) to avoid any bias in the estimation of the importance of some microRNAs. For example, this redundancy phenomenon appear when one particular microRNA form nearly identical canonicals triplexes with all the member of a microRNA family, since microRNAs from the same family can arbor nearly identical sequence at the exception of some nucleotides outside the seed region. 
+
+
+\subsection{Cytoscape visualization}
+
+The outputted file by the query\_triplex script is in a sif format, and can be passed as input to the software Cytoscape\cite{cytoscape}.
+
+This allow to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network.
+
+where the nodes are microRNAs, and the edges between two nodes the ID of the triplex composed with this two microRNAs. 
+
+This transformation of the data is meant to allow an easy visualization of the relative importances of each microRNAs. MicroRNAs which have the most partners, and by then those for which the sponging with a circular RNA will remove most of the pairs of collaborative microRNAs can be identified by looking at the nodes with the more edges.
+
 
 \begin{figure}[H]
 	\centering
 	{\includegraphics[width=1\textwidth]{cytoscape_output.png}}
-	\caption{Here the cytoscape visualization for 3 downregulated gene in colorectal cancer, compare to normal adjacent cells BEST4 (4 triplexes), LGI1 (20 triplexes), KRT24 (14 triplexes). Here hsa-miR-590-5p is a potent target for the circular RNA design script}
+	\caption{The Cytoscape visualization for 3 downregulated gene in colorectal cancer, comparde to normal adjacent cells. This genes are BEST4 (4 triplexes), LGI1 (20 triplexes), KRT24 (14 triplexes). Here hsa-miR-590-5p is a potent input for the circular RNA design script.}
 \end{figure}
 
 \chapter{Conclusion and Perspectives}
@@ -525,7 +537,7 @@ That make very likely that the workflow constructing the triplexRNA database doe
 \section{Visualization of the triplexes}
 
 While Cytoscape provide a comfortable way to visualize the pairs of microRNAs which repress the expression of a set of genes, it can't be run in command line and then can't be part of a pipeline. 
-The choice of cytoscape was done mainly for convenience purpose, and because the author of this document didn't find a Python library which would have allow him to fulfill the function of triplexes' visualization. 
+The choice of Cytoscape was done mainly for convenience purpose, and because the author of this document didn't find a Python library which would have allow him to fulfill the function of triplexes' visualization. 
 
 A prospective work for a core installation inside the triplexRNA of the executable which design a circular sponge, to enable the creation of the sponge from a web interface; would be the development of a visualization tools which can be run by a program, and which does not require for the user to run a graphical interface by itself.
 
