@@ -172,10 +172,13 @@
 \printmyminitoc %print minitoc
 	
 \section{MicroRNAs}
-MicroRNAs are 20-24 nt RNA molecules, which can form a complex with AGO family proteins members, to exert a post-transcriptional repression \cite{network, site, Urich, cancer}.\\
-This repression is exert by a inhibition of the translation's initiation, and 
-eventually, by a messenger RNA destabilization \cite{site, cancer}. \\ 
-The repression is mediated by the binding of the complex microRNA-Ago protein to the target messenger RNA, the complementarity between the microRNA sequence and the messenger RNA beeing the vector of recognition of the messenger RNA target.\\
+
+MicroRNAs are 20-24 nt RNA molecules, which can form a complex with AGO family proteins members and other ribonucleoprotein , to exert a post-transcriptional repression \cite{network, site, Urich, cancer}.  This complex is design as microRNA-induced silencing complex (miRISC)\cite{cancer}.
+
+This repression is exert by a inhibition of the translation's initiation, and  eventually, by a messenger RNA destabilization \cite{site, cancer}. \\ 
+
+The repression is mediated by the binding of the complex miRISC to the target messenger RNA, the complementarity between the microRNA sequence and the messenger RNA being the vector of recognition of the target and of the specificity of the interaction\\
+
 \begin{figure}[H]
 	\centering
 	{\includegraphics[width=1\textwidth]{microRNA.png}}
@@ -185,6 +188,15 @@ In that sequence, the most important is the "seed region" (see the figure above 
 
 Nonetheless, despite this evidences, the microRNAs' network is still poorly understood \cite{network,cancer}. The reason includes : the functional redundancy of the microRNAs, the lack of clear phenotype when one microRNA is knock-down, the combinational of the repression, etc\cite{network,cancer}. 
 Their levels of expression, like many non coding RNA, is altered in disease, including cancer \cite{cancer}.
+
+\section{Inhibition and level of mRNA}
+
+While the description of the mechanism of the translational inhibition above suggest that the levels of microRNA-inhibited mRNAs remain unchanged,
+
+more recent work has demonstrated that the repression of many miRNA targets is frequently associated with their destabilization \cite{cancer}.
+
+Micro-array studies of transcript levels in cells and tissues
+in which microRNA levels were experimentally altered, revealed marked changes in the abundance of validated or predicted miRNA targets, consistent with an role for miRNAs in mRNA destabilization \cite{cancer}.
 
 \section{MicroRNAs : a paradigm based on cooperativity}
 
@@ -202,8 +214,8 @@ The TriplexRNA database is based on this work. Based on a computational workflow
 
 \section{Circular RNAs}
 
-Formed by backsplincing\cite{?}, the circular RNA are a class of long non coding RNA.\\
-While the exact nature of their function remains elusive \cite{?, mir7, sponge}, it has been proved that one of them is to "sponge" the microRNAs\cite{mir7,sponge}. \\
+Mostly formed by backsplicing\cite{diversity, sponge}, the circular RNA are a class of long non coding RNA.\\
+While the exact nature of their function remains elusive \cite{diversity, mir7, sponge}, it has been proved that one of them is to "sponge" the microRNAs\cite{mir7,sponge}. \\
 By binding the microRNAs, a circular sponge decoy the microRNAs from their original targets. Since this targets are messenger RNAs, and that the microRNAs exert a repression, the sponge influence the level of expression of the genes regulated by this microRNA, and induce an up-regulation of their traduction \cite{mir7,carcinoma,sponge}.
 
 \begin{figure}[H]
@@ -227,12 +239,18 @@ A secondary focus was made on the melanoma cancer.
 The main motivation behind this was to extend the previous workflow to upregulate genes of interest, to a workflow to upregulate a pathways of interest.
  Indeed, the triplexRNA can be query for a list of genes and for pathways (the triplex integrate most of the KEGG pathways), including the KEGG melanoma pathways.\\
 
+\section{Why differential expression analysis}
+
+The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
 The idea was to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway.\\
 
 The choice of the Melanoma cancer have been done because of the potential experimental outcome. For example, the circular RNA sponge could have been tested in cells culture : the experimental design would have been to test if the artificial introduction of the circular RNA would have induced a phenotype reversion of the late stage phenotype toward an early stage phenotype.\\
   
 The whole workflow and controls are detailed below, and the limits of such a demarch explored inside the conclusion.
 
+\section{Why differential expression analysis}
+
+The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
 
 
 
@@ -331,8 +349,17 @@ In that case the pdf output advise to first replace this problematic U by a A, i
 
 \section{First workflow}
 
-\subsection{Down regulation and translationnal inhibition}
+As stated in the introduction, some recent works has demonstrated that the repression of many miRNA targets is frequently associated
+with their destabilization and a change in the abundance of some of validated or predicted miRNA targets \cite{cancer}. 
 
+Studies in which microRNAs levels were experimentally altered, revealed marked changes in the abundance of validated or predicted miRNA targets \cite{cancer}. Since microRNAs levels are altered in many diseases, including cancer \cite{cancer}
+
+In a more general way, the KEGGs pathways incode in 
+
+
+\section{Why differential expression analysis}
+
+The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
 
 
 
@@ -431,6 +458,20 @@ A really important point is that a genes negatively regulated by the microRNAs, 
 
 A more pertinent approach would be to investigate directly the microRNAs level of expression, and cross the data with the triplexes referenced inside the tripleRNA database or, more directly, rely on the expertise of the user. Indeed the user can have - through western blot experiments for example -, genes of interest, not down-regulated(?) but for which the translation of the messenger RNA is inhibited.\\
 
+\section{KEGGs map}
+
+The problem of finding which genes are down-regulated/
+
+Indeed, the KEGG pathways are only a list of genes inside the triplex RNA, which doesn't tell us which gene should be up-regulated/de-repressed by the circular RNA sponge. A similar information, however, is on the KEGGs map, where the effect of each genes/proteins are indicated.
+
+Considering this, an other approach will be to used the KEGGs map to select genes of interest and look at the microRNAs.
+
+This is a variation of a feature implemented in the triplexRNA database, which allow a visualization of the mutual target genes for selected microRNA pair, within the KEGG disease pathway. 
+
+But this feature is for two microRNAs only, and by then ignore the relatives importances of microRNAs among all the pairs, nor it can be done in the direction we would need (a selection of genes downregulated on the map towards all the microRNAs pairs).
+
+Anyway, a collection of manually drawn map is not the best material to carry such a task, especially in the optics of long maintenance.
+ 
 
 \section{cirMOT1 in hepatocellular carcinoma}
 One thing we can wonder is : does the workflow retrieve Mir-9 as a microRNAs to be target with a circular RNA in the case of the carcinoma cancer ?
