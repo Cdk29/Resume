@@ -369,17 +369,21 @@ To check the accuracy of such selection, a random forest classifier \cite{spring
 
 This approach is still a bit naive, especially regarding the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control will be perform, one for this two approach.
 
-\section{Why differential expression analysis}
-
-The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
-
-
 
 \begin{figure}[H]
 	\centering
 	{\includegraphics[width=1\textwidth]{Workflow1.png}}
-	\caption{The structure of the first iteration of the workflow. The retrieving of the genes composing the Melanoma KEGG pathways using a SQL query is th first step and the main characteristic of this iteration}
+	\caption{The structure of the first workflow. The retrieving of the genes composing the Melanoma KEGG pathways using a SQL query is the first step.}
 \end{figure}
+
+\subsection{Feature selection using randomized lasso}
+
+The feature selection method employed was the Stability Selection \cite{stability}, a method based on numerous subsampling of the data set - here, different samples - with different subsets of feature - here, the genes -, in combination with a method of feature selection.
+
+This different subsampling are then aggregated, and a ranking is produced using the features selection method retain. This Stability approach perform well in dataset with a lot of correlation in the data \cite{stability}, assuming that the model is sparse - meaning that only a few genes are responsible for the difference between the two conditions-.
+
+This framework of stability selection has already been used in biology\cite{tigress}, and is implemented for the lasso method inside the scikit learn library\cite{scikit} under the name of RandomizedLasso, a method which has already been deployed to identify cancer driver genes\cite{randomlasso}.
+
 
 \begin{figure}[H]
 	\centering
