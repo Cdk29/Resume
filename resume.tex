@@ -458,16 +458,22 @@ This transformation of the data is meant to allow an easy visualization of the r
 \section{Outcomes}
 
 \subsection{Circular design script}
-The major outcome to this are the two executables which can be found here.
+TEXPILE's code is hosted at GitHub: github.com/binfalse/TEXPILE
+The major outcome to this are the two executables which can be found at the following url : https://github.com/Cdk29.\\
 
-While one is only a local API to query a local instance of the triplexRNA, the other one can be used by anyone and independently from the workflow.
+While one is only a local API to query a local instance of the triplexRNA, the other one can be used by anyone and independently from the workflow.\\
 
-The circular design script can be used to design a circular microRNA sponges, get the quality control and refine the design with the "override" procedure, whether or not the previous workflow has been used to retrieve the microRNAs to be targeted.
+The circular design script automatize the construction of a circular RNA to decoy particular microRNAs. It takes as mandatory input a file with the names of the microRNAs which should be decoy, which ease any repetition of the process, and a file with priority numbers. This numbers are an intuitive way to create a circular sponge against several microRNAs without allocating to them the same space on the sequence of the circular RNA. Finally the script retain the circular sponge with the minimum free energy.\\
 
-While this script can be used separately from the triplexRNA, it's require that the user use the same names as the ones inside the triplexRNA database. 
+For the construction of the circular sponge, the user can also specify the maximum size for the circular RNA, a distance of cooperativity between the seed, as define in Saetrom and al\cite{coop}. \\
+
+The script finally compile a latex file online using the web tool TEXPILE. The pdf file obtained in this way contain the sequence of the circular RNA, a justification of the design of its characteristics, and the results of alignments perform against all the mature human microRNAs, using miRanda. This construction can be refine and redo by specifying a particular sequence for the binding site of one or several microRNA. \\
+
+While this script can be used separately from the triplexRNA, it's require that the user use the same names as the ones inside the triplexRNA database\cite{triplex}. 
 
 
 \subsection{Workflow}
+
 The workflow retrieve all the triplexes involved in the repression of a list of genes passed as input, using the triplexRNA database\cite{triplex}
 
 This workflow provide a output file for a graphical visualization of the cooperation between microRNAs which exert a repression in a cooperative manner on the level of expression of the genes passed as input.
