@@ -378,6 +378,13 @@ This approach is still a bit naive, especially regarding the complexity and hete
 
 \subsection{Differential expression analysis}
 
+The differential expression analysis has been performed using limma \cite{limma}, to find differentially expressed genes between the early and late stage of the melanoma, and then susceptible to be retain as a target for the an RNA therapy with a circular RNA.
+
+As a control, a projection of the sample on a two-dimensional scatterplot, where the distance approximate the expression differences between the samples, has been done.
+
+The plot does not show a perfect separation of tumour from normal samples as expected for a differential expression analysis which performed well (see figure below).
+
+
 \begin{figure}[H]
 	\centering
 	\subfloat[Scatterplot where the distance between sample is a projection of the log2 fold change distance, for Melanoma cancer data, between late melanoma and early melanoma.]{\includegraphics[width=0.49\textwidth]{Rplot_melanoma.pdf}\label{fig:f1}}
