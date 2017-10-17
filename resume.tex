@@ -474,24 +474,17 @@ While this script can be used separately from the triplexRNA, it's require that 
 
 \subsection{Workflow}
 
-The workflow retrieve all the triplexes involved in the repression of a list of genes passed as input, using the triplexRNA database\cite{triplex}
+The workflow retrieve all triplexes which are predicted to be functional according to the workflow published by Schmitz et Al \cite{triplex}, for a list of genes passed as input of the query script.\\
 
-This workflow provide a output file for a graphical visualization of the cooperation between microRNAs which exert a repression in a cooperative manner on the level of expression of the genes passed as input.
+The workflow provide then a output file for a graphical visualization of the cooperation between the microRNAs which exert a post-transcriptionnal repression of the genes inside the list, using Cytoscape\cite{cytoscape}.\\
 
-That way the workflow provide a tool to visualize which microRNAs are involved in the most pairs of cooperative microRNAs and whose that the sponging by a circular RNA will affect the most pairs and remove the most repression on the list of genes passed as input.
+That way the workflow provide a tool to visualize which microRNAs are involved in the most pairs of cooperative microRNAs and by then which microRNA to sponge with the circular RNA to affect the most pairs and relieve the most of the repression exert on the list of genes passed as input.\\
 
-The workflow finally provide a design script to automatize the construction of a circular RNA to decoy particular microRNAs, outputting a pdf report justifying the key points of the design and providing qualities control.
+The workflow finally provide a design script to automatize the construction of a circular RNA to decoy this microRNAs, providing a pdf report justifying the key points of the design and providing quality control in the form of alignments, using miRanda.\\
 
-The design script allow the user to specify parameters of his own interest : the list of microRNAs to be decoy, a list of priority which is an intuitive way to prioritize the sponging of some microRNAs, and a maximum size according to the user synthesis facilities. The size distance between the seed can be specified to adapt to new scientific evidence, or particular wishes of the user.
+The design script allow the user to specify parameters : the list of microRNAs to be decoyed, a list of priority which is an intuitive way to prioritize the sponging of some microRNAs, and a maximum size according to the user synthesis facilities. The size distance between the seed can be specified to adapt to new scientific evidence.\\
 
-Finally, the script allow to refine the design of the circular RNA sponge, through a repetition of execution of the design script, with some of or all binding sequence for microRNAs specified, instead of leaving the construction to the the automatic design, coupled with the repetition of the qualities controls. This process is ease by having files as inputs for the design script.
-
-The workflow rely on the triplexRNA database, allow the user to retrieve all the canonical triplexes for a list of genes, to visualize them in a way that allow to find the most important microRNAs using cytoscape, and finally to build a circular RNA to sponge them, and eventually to refine the process. 
-
-
-
-While there is some limits to this workflow (see perspectives below), ...
-
+Finally, the script allow to refine the design of the circular RNA sponge, through a repetition of execution of the design script. Since the alignments are perform again, and that the microRNA binding site sequence can be specified manually, the user can adjust the sequence of the binding sites according to the results of the alignments on every steps.\\
 
 \begin{figure}[H]
 	\centering
