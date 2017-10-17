@@ -349,13 +349,25 @@ In that case the pdf output advise to first replace this problematic U by a A, i
 
 \section{First workflow}
 
-As stated in the introduction, some recent works has demonstrated that the repression of many miRNA targets is frequently associated
-with their destabilization and a change in the abundance of some of validated or predicted miRNA targets \cite{cancer}. 
+Af we stated before, our goal was to investigate the design of a workflow to upregulate a biological pathways of interest with a circular RNA sponge.
 
-Studies in which microRNAs levels were experimentally altered, revealed marked changes in the abundance of validated or predicted miRNA targets \cite{cancer}. Since microRNAs levels are altered in many diseases, including cancer \cite{cancer}
+Our concern is that KEGG pathways are only implemented as a list of genes involved in disease, inside the triplexRNA database\cite{triplex}, without any further indication on their involvement. We don't know from the base if this genes are down-regulated, up-regulated, or inhibited in the biological conditions of interest. 
 
-In a more general way, the KEGGs pathways incode in 
+A solution is to perform a differential expression analysis on this subset of genes provide by the triplexRNA, to find which genes are lowly expressed in the disease, and potentially responsible of its phenotype.
 
+As we stated in the introduction, the repression exert by microRNA can result in a destabilization of the mRNA target and a change in the level of expression, but this is does not now necessary occur, and microRNA-inhibited mRNAs can have their level unchanged.
+
+Here, we do not presume that the change in level of expression of mRNA is caused by the change in the expression of microRNAs, as it occur in cancer\cite{cancer}, even if it's a possibility. 
+
+We are looking for genes which are potentially responsible for the phenotype. This genes would be then good candidatures to be upregulated or having their expression improved using a circular sponge.
+
+A transversal and complementary approach to the differential expression analysis is a feature selection, operated on the genes.
+
+The feature selection is a field of the machine learning domain\cite{springer}, dedicated to select feature among a set of data, in order to improve the generalization of models, or get a better understanding of the features and their relationship to the response variables\cite{springer}. It is this last aspect which we interest us.
+
+To check the accuracy of such selection, a random forest classifier \cite{springer} has been trained with this set of genes, and the error of classification has been plot.
+
+This approach is still a bit naive, especially regarding the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control will be perform, one for this two approach.
 
 \section{Why differential expression analysis}
 
