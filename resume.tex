@@ -535,23 +535,22 @@ A prospective work for a core installation inside the triplexRNA of the whole wo
 
 We have seen the example of the circular sponge circMOT1 in the introduction. This circular RNA is correlated with the prognosis of patient of Hepatocellular Carcinoma (HCC) and have been found to promote the expression of p21 by sponging the microRNA mir-9.\\
 
-One thing we can wonder is : does the workflow retrieve mir-9 as a microRNAs to be targeted with a circular RNA in the case of the HCC cancer ?
+One thing we can wonder is : does the workflow retrieve mir-9 as a microRNAs to be targeted with a circular RNA in the case of the HCC cancer ?\\
 
-
-While there is nothing to criticize in the experimental demarche detailed in the article (mir-9 and circMOT1 are clearly identified as responsible for the down expression of p21 and for the inhibition of the repressive effect of Mir-9, respectively)
-
-, miR-9 is actually no part of the triplexes involving the CDKN1A messenger RNA. There is several reasons which could explain this :
+MiR-9 is actually no part of the triplexes involving the CDKN1A messenger RNA. While there is nothing to criticize in the experimental demarche detailed in the article (mir-9 and circMOT1 are clearly identified as responsible for the down expression of p21 and for the inhibition of the repressive effect of Mir-9, respectively), there is several reasons which could explain this :
 
 \begin{itemize}
 	
 	
-\item Among the 99 microRNAs identified using miRanda as susceptible to bind cirMOT1, only 20 of them have been screened for specific enrichment after RNA precipitation in vivo, considering that they were previously describe as involved in the hepatocellular carcinoma.
+\item Among the 99 microRNAs identified using miRanda as susceptible to bind cirMOT1, only 20 of them have been screened for specific enrichment after RNA precipitation in vivo, since they were previously describe as involved in the hepatocellular carcinoma.
 	
-While this analytic procedure is entirely relevant in the case of a cancer study, right now I would deplore the lack of information about the 80 other ones. Also, while the case of the sponge ciRS-7\cite{mir7} is abundantly cited along the article\cite{carcinoma}, there is no reason to think that most of the natural sponge decoy only one microRNA. The supplementals data of Memczak et al,\cite{mir7} are rich in predicted circular RNAs with a seed match for more than one microRNA family. 
-	 
-\item MiR-9 is over expressed in the hepatocellular carcinoma, and this is why the researcher selected this microRNA, among other, for screening after the RNA precipitation. And in this situation of over expression, low affinity sites for the microRNA (6-nt sites) become occupied and functionnal \cite{mir9}. 
+While this analytic procedure is entirely relevant in the case of a cancer study, for our own problematics of microRNAs combinatorial we are missing the information about the 79 other ones.
 
-Nonetheless, the triplexRNA database has been construct based on binding site prediction extracted from microRNA.org, in which only binding sites with good conservation and prediction scores were retained \cite{triplex}, binding sites which are assumed to be the functionnal ones in normal circomstances.
+Also, while the case of the sponge ciRS-7\cite{mir7} is abundantly cited along the article\cite{carcinoma}, there is no reason to think that most of the natural sponge decoy only one type of microRNA. The supplementals data of Memczak et al,\cite{mir7} are rich in predicted circular RNAs with a seed match for more than one microRNA family. 
+	 
+\item MiR-9 is over expressed in the hepatocellular carcinoma, and this is why the researcher selected this microRNA for screening after the RNA precipitation. In this situation of over expression, unlike normal conditions, low affinity sites for microRNAs (6-nt sites) become occupied and functional\cite{mir9}. 
+
+Nonetheless, the triplexRNA database has been construct based on binding site predictions extracted from microRNA.org, in which only binding sites with good conservation and good prediction scores were retained\cite{triplex}. This binding sites are assumed to be the ones functional in normal circumstances, with no over-expression of the microRNAs.
 
 That make very likely that the workflow constructing the triplexRNA database does not take into account some microRNAs binding sites which are functional uniquely in some diseases, and by that, it make possible that some triplexes, specifics to particular disease and associated with specific over expression of some microRNAs, are missing in the triplexRNA database.
 
