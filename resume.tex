@@ -409,8 +409,18 @@ Nonetheless, the plotting of the classification error, for the whole melanoma da
 
 \section{Current workflow}
 
-To illustrate the current workflow, we will create a sponge in the context of a RNA therapy for colorectal cancer, using some of the genes differentially expressed between the normal condition and the tumor condition. Of course, while this reduced set of genes is sufficient to distinguish between the two condition, they are not necessary responsible of the difference in the phenotype. Such a diagnostic would require more investigation, using ontologies and literature. Here we take select them for illustration purpose.\\
-A normal use of the workflow rely on the expertise of the user and that the user provide a set of downregulated genes he is interested in.\\
+
+It appears from the previous section that the use of the KEGG pathways encoded inside the triplexRNA database was not pertinent in the context of choosing the set of genes to run the rest of the workflow.\\
+
+This part of the workflow has been by then edited : the executable which query the script has been edit to retrieve the canonicals triplexes for a list of genes provided as input. For the list of genes, it seems better to rely on the user's expertise to provide it (see conclusion and perspective for more details).\\
+
+To illustrate the current workflow, we will create a sponge in the context of a RNA therapy for the colorectal cancer, using the curated RNA-seq data\cite{curated} used in the previous section to perform the control of the differential expression analysis and of the scatterplot.\\
+
+In order to do so, we will use some of the top genes differentially expressed between the normal condition and the tumor condition.\\
+
+Of course, while this reduced set of genes is sufficient to distinguish between the two condition (see scatterplot with the top12 genes below), they are not necessary responsible for the differences in the phenotype between the normal adjacent cell and the tumor cells, and promoting the expression of genes down-regulated in the cancerous cells will not necessary end in a reversion of the phenotype of the cancerous cells into normal cells (see conclusion for further details and discussions).\\
+
+Such a diagnostic would require more investigation, using ontologies and literature for that cancer\cite{colorectal}. Here we select this genes for illustration purpose. A normal use of the workflow would rely on the expertise of the user and that the user provide a set of genes for which he want to promote the expression.\\
 
 \subsection{Diffential expression analysis, Colorectal Cancer}
 
@@ -427,16 +437,24 @@ A normal use of the workflow rely on the expertise of the user and that the user
 
 \subsection{An executable to query the triplexRNA}
 
-The executable which was used to retrived the list of genes inside a pathways, and the canonical triplexes for this genes, was modified to retrieve the canonical triplexes for a list of genes past as input in a text file.
+The executable which was used to retrieved the list of genes inside a pathways, and the canonical triplexes for this genes, was modified to retrieve the canonical triplexes for a list of genes past as input in a text file.\\
 
-The script retrieve all the triplexes involving this genes, using a JSON query for each genes from the list of genes (see material and method), with a filtering of the redundant triplexes (see material and method) to avoid any bias in the estimation of the importance of some microRNAs. For example, this redundancy phenomenon appear when one particular microRNA form nearly identical canonicals triplexes with all the member of a microRNA family, since microRNAs from the same family can arbor nearly identical sequence at the exception of some nucleotides outside the seed region. 
+The script retrieve all the triplexes involving this genes, using a JSON query for each genes from the list of genes (see material and method), with a filtering of the redundant triplexes (see material and method) to avoid any bias in the estimation of the importance of some microRNAs, and keep only the canonical triplexes, which are the functional triplexes according to the workflow publish by Schmitz et al.\cite{triplex}.\\
+
+For example, this redundancy phenomenon appear when one particular microRNA form nearly identical canonicals triplexes with all the member of a microRNA family, since microRNAs from the same family can arbor nearly identical sequence exept for some nucleotides outside the seed region.\\
+
+This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}.\\
 
 
 \subsection{Cytoscape visualization}
 
 The outputted file by the query\_triplex script is in a sif format, and can be passed as input to the software Cytoscape\cite{cytoscape}.
 
-This allow to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network.
+Cytoscape is a software for Cytoscape is an open source software platform for visualizing networks
+
+The sif file format 
+
+This allow to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network.\\
 
 where the nodes are microRNAs, and the edges between two nodes the ID of the triplex composed with this two microRNAs. 
 
@@ -463,7 +481,7 @@ While one is only a local API to query a local instance of the triplexRNA, the o
 
 The circular design script automatize the construction of a circular RNA to decoy particular microRNAs. It takes as mandatory input a file with the names of the microRNAs which should be decoy, which ease any repetition of the process, and a file with priority numbers. This numbers are an intuitive way to create a circular sponge against several microRNAs without allocating to them the same space on the sequence of the circular RNA. Finally the script retain the circular sponge with the minimum free energy.\\
 
-For the construction of the circular sponge, the user can also specify the maximum size for the circular RNA, a distance of cooperativity between the seed, as define in Saetrom and al\cite{coop}. \\
+For the construction of the circular sponge, the user can also specify the maximum size for the circular RNA, a distance of cooperativity between the seed, as define in Saetrom et al\cite{coop}. \\
 
 The script finally compile a latex file online using the web tool TEXPILE. The pdf file obtained in this way contain the sequence of the circular RNA, a justification of the design of its characteristics, and the results of alignments perform against all the mature human microRNAs, using miRanda. This construction can be refine and redo by specifying a particular sequence for the binding site of one or several microRNA. \\
 
@@ -537,11 +555,19 @@ Anyway, a collection of manually drawn map is not the best material to carry suc
 
 In the current workflow, Cytoscape\cite{cytoscape} is used to visualize the pairs of microRNAs which repress the expression of a set of genes.\\
 
-While Cytoscape provide a comfortable way to visualize the pairs of microRNAs, it's a software and cannot be run in command line nor by a script. By then, it cannot be part of a pipeline and cannot be integrate directly inside the front-end of the triplexRNA database and require a separate utilization.\\ 
+While Cytoscape provide a comfortable way to visualize the pairs of microRNAs, as a software it cannot be part of a pipeline and cannot be integrate directly inside the front-end of the triplexRNA database and require a separate utilization.\\ 
 
 The choice of Cytoscape was done mainly for convenience purpose, and because the author of this document did not find a Python library which would have allow him to fulfill the function of triplexes' visualization. \\
 
-A prospective work for a core installation inside the triplexRNA of the whole workflow, to enable the creation of the sponge from a web interface, would be the development of a visualization tools which can be run in front-end, and which does not require for the user to run a graphical interface by himself.
+The next step for a core installation inside the triplexRNA of the whole workflow, to enable the creation of the sponge from a web interface should be :
+
+\begin{itemize}
+	\item or the development of a visualization tools which can be run in front-end, and which does not require for the user to run a graphical interface by himself separatly
+	
+	\item or more convenient the use of the headless mode of Cytoscape
+	
+\end{itemize}
+
 
 \section{cirMOT1 in hepatocellular carcinoma}
 
