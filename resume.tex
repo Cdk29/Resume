@@ -473,6 +473,8 @@ The code of the circular design script is hosted on Github : https://github.com/
 
 \subsection{Workflow}
 
+The form retain for the worflow ...
+
 The workflow retrieve all triplexes which are predicted to be functional according to the workflow published by Schmitz et Al \cite{triplex}, for a list of genes passed as input of the query script.\\
 
 The workflow provide then a output file for a graphical visualization of the cooperation between the microRNAs which exert a post-transcriptionnal repression of the genes inside the list, using Cytoscape\cite{cytoscape}.\\
@@ -530,6 +532,9 @@ The choice of Cytoscape was done mainly for convenience purpose, and because the
 A prospective work for a core installation inside the triplexRNA of the whole workflow, to enable the creation of the sponge from a web interface, would be the development of a visualization tools which can be run in front-end, and which does not require for the user to run a graphical interface by himself.
 
 \section{cirMOT1 in hepatocellular carcinoma}
+
+We have seen the example of the circular sponge circMOT1 in the introduction. This circular RNA is correlated with the prognosis of patient of Hepatocellular Carcinoma and have been found to promote the expression of p21 by sponging the microRNA mir-9.
+
 One thing we can wonder is : does the workflow retrieve Mir-9 as a microRNAs to be target with a circular RNA in the case of the carcinoma cancer ?
 
 While there is little to criticize in the demarche exposed in the article (Mir-9 and circMOT1 are clearly identified as responsible for the down expression of p21 and for the inhibition of the repressive effect of Mir-9, respectively), MiR-9 is actually no part of the triplexes involving the CDKN1A messenger RNA. There is several reason which could explain this :
@@ -545,7 +550,7 @@ While this analytic procedure is entirely relevant in the case of a cancer study
 
 Nonetheless, the triplexRNA database has been construct based on binding site prediction extracted from microRNA.org, in which only binding sites with good conservation and prediction scores were retained \cite{triplex}, binding sites which are assumed to be the functionnal ones in normal circomstances.
 
-That make very likely that the workflow constructing the triplexRNA database does not take into account some microRNAsbinding sites which are functional uniquely in some diseases, and by that, it make possible that some triplexes, specifics to particular disease and associated with specific over expression of some microRNAs, are missing in the triplexRNA database.
+That make very likely that the workflow constructing the triplexRNA database does not take into account some microRNAs binding sites which are functional uniquely in some diseases, and by that, it make possible that some triplexes, specifics to particular disease and associated with specific over expression of some microRNAs, are missing in the triplexRNA database.
 
 \end{itemize}
 
