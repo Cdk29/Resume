@@ -469,23 +469,23 @@ The script finally compile a latex file online using the web tool TEXPILE. The p
 
 While this script can be used separately from the triplexRNA, it's require that the user use the same names as the ones inside the triplexRNA database\cite{triplex}. 
 
-The code of the circular design script is hosted on Github : https://github.com/Cdk29/circular\_RNA\_design where an example of the pdf report is provided.
+The code of the circular design script is hosted on Github :\\ https://github.com/Cdk29/circular\_RNA\_design where an example of the pdf report is provided.
+
+\subsection{Workflow structure}
+
+The differential expression analysis and the feature selection performed in the first workflow was a tentative to take advantage of the fact that KEGG pathways are encoded inside the triplexRNA database and to have a list of genes of interest.\\
+
+Since this approach was not concluding, it has been removed, leaving us with a workflow without any process to select the list of genes.\\
+
+The form retain for the worflow rely on the user to provide the genes of interest, as it seems more favorable to rely on the user's expertise.\\ 
+
+To retake the exemple of Hepatocellular Carcinoma (HCC), which is develop in the introduction and in this chapter (section below, cirMOT1 in hepatocellular carcinoma), not all the genes differentially expressed in the Hepatocellular Carcinoma cancer are responsible for the invasive phenotype\cite{example}, some being responsible for the migration, immune escape, etc\cite{example}.
+
+A circular sponge designed against the microRNAs involved in the most triplexes involving the messenger RNA of the top down-regulated genes in the HCC may not have been as effective as a sponge targeting specifically the microRNAs targeting the mRNA CDKN1A or a sponge designed against mir-9. \\
+
+For this reasons, and the fact that levels of microRNA-inhibited messenger RNAs may remain unchanged (see subsection "Down-regulation ad translational inhibition below) the structure of the workflow retained rely on the user's expertise, which provide the list of genes to start the workflow.\\
 
 \subsection{Workflow}
-
-Since the feature selection and the differential analysis inside the KEGG pathways
-
-The use of the KEGG pathways inside the triplexdatabase was not concluent
-
-
-The differential expression analysis performed on the curated data , and 
-...
-
-It seems more favorable to rely on the user's particular expertise
-
-The  form retain for the worflow rely on the user to provide the genes of interest and in this chapter (see below)
-
-To retake the exemple of Hepatocellular Carcinoma, which is develop in the introduction and in this chapter (selow below, cirMOT1 in hepatocellular carcinoma), no all the genes differentially expressed in the hepato carcinoma cancer \cite{example}, and a sponge which have target would note be as effective as a one sponging specificaly the microRNAs targeting the mRNA of p21.
 
 The workflow retrieve all triplexes which are predicted to be functional according to the workflow published by Schmitz et Al \cite{triplex}, for a list of genes passed as input of the query script.\\
 
@@ -506,7 +506,7 @@ Finally, the script allow to refine the design of the circular RNA sponge, throu
 \end{figure}
 
 \section{Perspectives}
-\subsection{Down-regulation and translationnal inhibition}
+\subsection{Down-regulation and translational inhibition}
 
 
 A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptionnal level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.\\
