@@ -495,9 +495,9 @@ Finally, the script allow to refine the design of the circular RNA sponge, throu
 \subsection{Down-regulation and translationnal inhibition}
 
 
-A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptionnal level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.
+A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptionnal level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.\\
 
-In the first case the genes will not appeared as down regulated in a differential, but the transduction of the mRNA will be inhibited and the gene not expressed.\\,
+In the first case the genes will not appeared as down regulated in a differential, but the transduction of the mRNA will be inhibited and the gene not expressed.\\
 
 A other pertinent approach could be the use of or the integration of miRNA-seq data with the data of the triplexRNA, to investigate directly the microRNAs level of expression.\\
  
@@ -521,10 +521,13 @@ Anyway, a collection of manually drawn map is not the best material to carry suc
  
 \subsection{Visualization of the triplexes}
 
-While Cytoscape provide a comfortable way to visualize the pairs of microRNAs which repress the expression of a set of genes, it can't be run in command line and then can't be part of a pipeline. 
-The choice of Cytoscape was done mainly for convenience purpose, and because the author of this document didn't find a Python library which would have allow him to fulfill the function of triplexes' visualization. 
+In the current workflow, Cytoscape\cite{cytoscape} is used to visualize the pairs of microRNAs which repress the expression of a set of genes.
 
-A prospective work for a core installation inside the triplexRNA of the executable which design a circular sponge, to enable the creation of the sponge from a web interface; would be the development of a visualization tools which can be run by a program, and which does not require for the user to run a graphical interface by itself.
+While Cytoscape provide a comfortable way to visualize the pairs of microRNAs, it's a software and cannot be run in command line nor by a script. By then, it cannot be part of a pipeline and cannot be integrate directly inside the front-end of the triplexRNA database and require a separate utilization.\\ 
+
+The choice of Cytoscape was done mainly for convenience purpose, and because the author of this document did not find a Python library which would have allow him to fulfill the function of triplexes' visualization. \\
+
+A prospective work for a core installation inside the triplexRNA of the whole workflow, to enable the creation of the sponge from a web interface, would be the development of a visualization tools which can be run in front-end, and which does not require for the user to run a graphical interface by himself.
 
 \section{cirMOT1 in hepatocellular carcinoma}
 One thing we can wonder is : does the workflow retrieve Mir-9 as a microRNAs to be target with a circular RNA in the case of the carcinoma cancer ?
