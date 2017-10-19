@@ -462,20 +462,20 @@ In other words, this allow to retrieve which microRNA should be sponge to remove
 
 This format specifies only nodes and interactions and it is written as follow :\\
 
-nodeA relationship\_type nodeB \\
+
+nodeA relationship\_type nodeB 
+
 nodeC relationship\_type nodeA \\
 
 
-While the sif file format specified only nodes and interaction, Cytoscape merge by himself the nodes with the same names 
+Also, while the sif file format specify only nodes and interactions, the software Cytoscape merge by himself the nodes with the same names. This allow to require only a simple format as output for the previous script, to retrieve all the triplexes.\\
 
 
-from a simple format as output for the previous script.
+So, Cytoscape allow the user to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network (cf figure). This transformation of the data is meant to allow an easy visualization of the relative importances of each microRNAs.\\
 
-This allow to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network.\\
+MicroRNAs which have the most partners, and by then those for which the sponging with a circular RNA will remove most of the pairs of collaborative microRNAs can be identified by looking at the nodes with the more edges.\\
 
-where the nodes are microRNAs, and the edges between two nodes the ID of the triplex composed with this two microRNAs. 
-
-This transformation of the data is meant to allow an easy visualization of the relative importances of each microRNAs. MicroRNAs which have the most partners, and by then those for which the sponging with a circular RNA will remove most of the pairs of collaborative microRNAs can be identified by looking at the nodes with the more edges.
+The user can then provide this names as input to the next step of the workflow, the circular design script.\\
 
 
 \begin{figure}[H]
