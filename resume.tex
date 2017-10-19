@@ -290,14 +290,16 @@ This approach have its limits, especially regarding the complexity and heterogen
 	\caption{The structure of the first workflow. The retrieving of the genes composing the Melanoma KEGG pathways using a SQL query is the first step.}
 \end{figure}
 
+\subsection{Xena}
+
+
 \subsection{Differential expression analysis}
 
-The differential expression analysis has been performed using limma \cite{limma}, to find differentially expressed genes between the early and late stage of the melanoma, and then susceptible to be retain as a target for the an RNA therapy with a circular RNA.
+The differential expression analysis has been performed using limma \cite{limma}, to find differentially expressed genes between the early and late stage of the melanoma, and then susceptible to be retain as a target for the an RNA therapy with a circular RNA.\\
 
-As a control, a projection of the sample on a two-dimensional scatterplot, where the distance approximate the expression differences between the samples, has been done.
+As a control, a projection of the sample on a two-dimensional scatterplot, where the distance approximate the expression differences between the samples, has been done.\\
 
-The plot does not show a perfect separation of tumor from normal samples as expected for a differential expression analysis which performed well (see figure below).
-
+The plot does not show a perfect separation of tumor from normal samples as it should be expected for a differential expression analysis which performed well (see figure below). Beside the scatterplot for the differential expression analysis performed on the set of genes inside the KEGG Melanoma pathways, is represented the scatterplot for a differential expression analysis perform on curated RNA-seq data for the colorectal cancer\cite{curated}.\\
 
 \begin{figure}[H]
 	\centering
@@ -327,6 +329,9 @@ Nonetheless, the plotting of the classification error, for the whole melanoma da
 	\caption{Error of classification of the random forest classifier, using a selection of genes inside the KEGG melanoma pathways, selection output by the feature selection approach}
 \end{figure}
 
+\subsection{Genes selections}
+
+Considering the two controls ...
 
 \section{Current workflow}
 
