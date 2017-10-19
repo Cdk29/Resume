@@ -439,11 +439,17 @@ Such a diagnostic would require more investigation, using ontologies and literat
 
 The executable which was used to retrieved the list of genes inside a pathways, and the canonical triplexes for this genes, was modified to retrieve the canonical triplexes for a list of genes past as input in a text file.\\
 
-The script retrieve all the triplexes involving this genes, using a JSON query for each genes from the list of genes (see material and method), with a filtering of the redundant triplexes (see material and method) to avoid any bias in the estimation of the importance of some microRNAs, and keep only the canonical triplexes, which are the functional triplexes according to the workflow publish by Schmitz et al.\cite{triplex}.\\
+The script retrieve all the triplexes involving this genes, using a JSON query for each genes from the list of genes (see material and method), with a filtering of the redundant triplexes (see below and the material and method), to avoid any bias in the estimation of the importance of some microRNAs, and keep only the canonical triplexes, which are the functional triplexes according to the workflow publish by Schmitz et al.\cite{triplex}.\\
 
-For example, this redundancy phenomenon appear when one particular microRNA form nearly identical canonicals triplexes with all the member of a microRNA family, since microRNAs from the same family can arbor nearly identical sequence exept for some nucleotides outside the seed region.\\
+Redundant triplexes are triplexes in which the two microRNAs bind the messenger RNA at the same positions, with one microRNA in common among all the different triplexes.\\
 
-This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}.\\
+This redundancy phenomenon appear when one particular microRNA form nearly identical canonicals triplexes with all the member of a microRNA family, since microRNAs from the same family can arbor nearly identical sequences except for some nucleotides outside the seed region.\\
+
+While this triplexes are different biochemical entities, they can not cumulate their repression on the same molecule of messenger RNA, since the microRNAs of this redundant triplexes bound the messenger RNA on the same place.\\
+
+This introduce a bias in the following steps of the worfklow when we aim to find which microRNAs have the most partners. A microRNAs involved in several redundant triplexes will be seen as with multiples partners, while its sponging will only remove the repression of one pair of cooperatives microRNAs on the same molecule of messenger RNA.\\
+
+This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}, the following set of the worflow.\\
 
 
 \subsection{Cytoscape visualization}
