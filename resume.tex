@@ -247,12 +247,13 @@ The KEGG pathways are also encode in the base in the form of a list of genes, an
 
 The problem is : as we want to promote the expression of a pathways in a biological condition of interest, and since the KEGG pathways are only encode as a list of genes inside the triplex RNA, which does not tell us which gene are down-regulated or which are post-transcriptionaly repressed by microRNAs, how to know which genes should have their expression promoted to up-regulate the pathways ?\\
 
+The approach retained was to performed a differential expression analysis for the set of genes inside the pathways, between a disease condition and a normal or early stage condition, to find which genes should have their expression promoted, in the context of RNA therapy for the disease. This genes can have their level of expression down-regulated because microRNA-inhibited mRNAs can have their level lowered, in the context of a deregulation of the microRNAs networks in disease\cite{cancer}, or their low level of expression can be promoting the disease. In both case, promoting their expression with a microRNA circular sponge make sens in the context of a RNA therapy.\\ 
 
-
-
-The idea was to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway.\\
 
 The choice of the Melanoma cancer have been done because of the potential experimental outcome. For example, the circular RNA sponge could have been tested in cells culture : the experimental design would have been to test if the artificial introduction of the circular RNA would have induced a phenotype reversion of the late stage phenotype toward an early stage phenotype.\\
+
+For this reason, we aim to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway, for each stage.\\
+
   
 The whole workflow and controls are detailed below, and the limits of such a demarch explored inside the conclusion.
 
