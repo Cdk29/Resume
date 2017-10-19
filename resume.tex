@@ -239,7 +239,16 @@ The main motivation behind this was to extend the previous workflow to upregulat
 
 \section{Why differential expression analysis}
 
-The other problem is that KEGGs pathways, the way that they are incoded inside the database, are just a list of genes, not telling if ...
+Our goal is to design a workflow to design a circular sponge, to up-regulate a pathways of interest, in the context of a RNA therapy.\\
+
+The triplexRNA integrate such pathways in the form of KEGG pathways, which are a collection of manually drawn pathway maps representing our knowledge on the molecular interaction for various metabolism or disease\cite{KEGG}. And the database actually allow to visualize the mutual "target genes" of a selected pair of microRNA within a KEGG map (the genes being highlighted in yellow on the map).\\
+
+The KEGG pathways are also encode in the base in the form of a list of genes, and by then the triplexRNA database allow to retrieve all the triplexes involving the genes of a pathways, just by selected the KEGG pathways.\\
+
+
+
+
+
 The idea was to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway.\\
 
 The choice of the Melanoma cancer have been done because of the potential experimental outcome. For example, the circular RNA sponge could have been tested in cells culture : the experimental design would have been to test if the artificial introduction of the circular RNA would have induced a phenotype reversion of the late stage phenotype toward an early stage phenotype.\\
@@ -286,7 +295,7 @@ The differential expression analysis has been performed using limma \cite{limma}
 
 As a control, a projection of the sample on a two-dimensional scatterplot, where the distance approximate the expression differences between the samples, has been done.
 
-The plot does not show a perfect separation of tumour from normal samples as expected for a differential expression analysis which performed well (see figure below).
+The plot does not show a perfect separation of tumor from normal samples as expected for a differential expression analysis which performed well (see figure below).
 
 
 \begin{figure}[H]
@@ -568,7 +577,7 @@ The user can have - through western blot experiments, for example -, evidences t
 
 \subsection{KEGGs map}
 
-The differential expression analysis was motivated by the problem of finding which genes are down-regulated or repressed in a biological condition of interest.\\
+The differential expression analysis was motivated by the problem of finding which genes are down-regulated or repressed in the biological condition of interest, condition which is the object of the RNA therapy.\\
 
 Indeed, the KEGG pathways are only encode as a list of genes inside the triplex RNA, which does not tell us which gene are down-regulated or which are post-transcriptionally repressed by microRNAs.\\
 
