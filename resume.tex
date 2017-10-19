@@ -249,7 +249,6 @@ The problem is : as we want to promote the expression of a pathways in a biologi
 
 The approach retained was to performed a differential expression analysis for the set of genes inside the pathways, between a disease condition and a normal or early stage condition, to find which genes should have their expression promoted, in the context of RNA therapy for the disease. This genes can have their level of expression down-regulated because microRNA-inhibited mRNAs can have their level lowered, in the context of a deregulation of the microRNAs networks in disease\cite{cancer}, or their low level of expression can be promoting the disease. In both case, promoting their expression with a microRNA circular sponge make sens in the context of a RNA therapy.\\ 
 
-
 The choice of the Melanoma cancer have been done because of the potential experimental outcome. For example, the circular RNA sponge could have been tested in cells culture : the experimental design would have been to test if the artificial introduction of the circular RNA would have induced a phenotype reversion of the late stage phenotype toward an early stage phenotype.\\
 
 For this reason, we aim to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway, for each stage.\\
@@ -264,25 +263,25 @@ The whole workflow and controls are detailed below, and the limits of such a dem
 
 \section{First workflow}
 
-Af we stated before, our goal was to investigate the design of a workflow to upregulate a biological pathways of interest with a circular RNA sponge.
+Af we stated before, our goal was to investigate the design of a workflow to upregulate a biological pathways of interest with a circular RNA sponge.\\
 
-Our concern is that KEGG pathways are only implemented as a list of genes involved in disease, inside the triplexRNA database\cite{triplex}, without any further indication on their involvement. We don't know from the base if this genes are down-regulated, up-regulated, or inhibited in the biological conditions of interest. 
+Our concern is that KEGG pathways are only implemented as a list of genes involved in disease, inside the triplexRNA database\cite{triplex}, without any further indication on their involvement. We don't know from the base if this genes are down-regulated, up-regulated, or inhibited in the biological conditions of interest.\\
 
-A solution is to perform a differential expression analysis on this subset of genes provide by the triplexRNA, to find which genes are lowly expressed in the disease, and potentially responsible of its phenotype.
+The solution is to perform a differential expression analysis on this subset of genes provide by the triplexRNA, to find which genes of the pathway are lowly expressed in the disease.\\
 
-As we stated in the introduction, the repression exert by microRNA can result in a destabilization of the mRNA target and a change in the level of expression, but this is does not now necessary occur, and microRNA-inhibited mRNAs can have their level unchanged.
+As we stated in the introduction, the repression exert by microRNA can result in a destabilization of the mRNA target and a change in the level of expression, but this is does not now necessary occur, and microRNA-inhibited mRNAs can have their level unchanged.\\
 
-Here, we do not presume that the change in level of expression of mRNA is caused by the change in the expression of microRNAs, as it occur in cancer\cite{cancer}, even if it's a possibility. 
+Here, we do not presume that the change in level of expression of mRNA is caused by the change in the expression of microRNAs, as it occur in cancer\cite{cancer}, even if it's a possibility. \\
 
-We are looking for genes which are potentially responsible for the phenotype. This genes would be then good candidatures to be upregulated or having their expression improved using a circular sponge.
+We are looking for genes which should be good candidate to have their expression promoted using a circular sponge, in the context of a RNA therapy.\\
 
-A transversal and complementary approach to the differential expression analysis is a feature selection, operated on the genes.
+A transversal and complementary approach to the differential expression analysis is a feature selection, operated on the genes.\\
 
-The feature selection is a field of the machine learning domain\cite{springer}, dedicated to select feature among a set of data, in order to improve the generalization of models, or get a better understanding of the features and their relationship to the response variables\cite{springer}. It is this last aspect which we interest us.
+The feature selection is a field of the machine learning domain\cite{springer}, dedicated to select feature among a set of data, in order to improve the generalization of models, or get a better understanding of the features and their relationship to the response variables\cite{springer}. It is this last aspect which we interest us, trying to select genes to discriminate between the early and late stage of the melanoma.\\
 
-To check the accuracy of such selection, a random forest classifier \cite{springer} has been trained with this set of genes, and the error of classification has been plot.
+To check the accuracy of such selection, a random forest classifier \cite{springer} has been trained with this set of genes, and the error of classification has been plot.\\
 
-This approach is still a bit naive, especially regarding the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control will be perform, one for this two approach.
+This approach have its limits, especially regarding the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control will be perform, one per approach, for both the differential expression analysis and the feature selection.
 
 
 \begin{figure}[H]
