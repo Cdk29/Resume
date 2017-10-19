@@ -449,16 +449,27 @@ While this triplexes are different biochemical entities, they can not cumulate t
 
 This introduce a bias in the following steps of the worfklow when we aim to find which microRNAs have the most partners. A microRNAs involved in several redundant triplexes will be seen as with multiples partners, while its sponging will only remove the repression of one pair of cooperatives microRNAs on the same molecule of messenger RNA.\\
 
-This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}, the following set of the worflow.\\
+This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}, the following set of the worflow.
 
 
 \subsection{Cytoscape visualization}
 
-The outputted file by the query\_triplex script is in a sif format, and can be passed as input to the software Cytoscape\cite{cytoscape}.
+The outputted file by the script which retrieve all the triplexes for a list of genes is in a sif format, and can be passed as input to the software Cytoscape\cite{cytoscape}.\\
 
-Cytoscape is a software for Cytoscape is an open source software platform for visualizing networks
+Cytoscape is an open source software platform for visualizing networks. While it can seem a curious choice when it comes to microRNAs, this transformation of data in the form of a non oriented network, where the edges are the triplex ID and the nodes the microRNAs, allow to visualize which microRNA form a pair with which microRNA, and to identified easily which microRNA has the most partners.\\
 
-The sif file format 
+In other words, this allow to retrieve which microRNA should be sponge to remove the most triplexes and promote the genes expression.\\
+
+This format specifies only nodes and interactions and it is written as follow :\\
+
+nodeA relationship\_type nodeB \\
+nodeC relationship\_type nodeA \\
+
+
+While the sif file format specified only nodes and interaction, Cytoscape merge by himself the nodes with the same names 
+
+
+from a simple format as output for the previous script.
 
 This allow to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network.\\
 
@@ -533,7 +544,7 @@ Finally, the script allow to refine the design of the circular RNA sponge, throu
 \subsection{Down-regulation and translational inhibition}
 
 
-A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptionnal level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.\\
+A really important point to keep in mind is that a gene repressed by the microRNAs at the post transcriptional level, in a biological condition of interest, will not necessary appeared as differentially expressed between the biological condition and the control condition after a RNA-seq studies. There is still an ambiguity of whether or not the levels of microRNA-inhibited mRNAs remain unchanged or not \cite{cancer}.\\
 
 In the first case the genes will not appeared as down regulated in a differential, but the transduction of the mRNA will be inhibited and the gene not expressed.\\
 
