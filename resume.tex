@@ -411,9 +411,9 @@ nodeC relationship\_type nodeA \\
 
 Also, while the sif file format specify only nodes and interactions, the software Cytoscape merge by himself the nodes with the same names. This allow to require only a simple format as output for the previous script, to retrieve all the triplexes.\\
 
-So, Cytoscape allow the user to visualize the pair of cooperative microRNAs which exert a repression on the genes passed as arguments, under the form of a network (cf figure). This transformation of the data is meant to allow an easy visualization of the relative importances of each microRNAs.\\
+So, Cytoscape allow the user to visualize the pair of cooperatives microRNAs which exert a repression on the genes passed as arguments, under the form of a network (cf figure). This transformation of the data is meant to allow an easy visualization of the relative importances of each microRNAs.\\
 
-MicroRNAs which have the most partners, and by then those for which the sponging with a circular RNA will remove most of the pairs of collaborative microRNAs can be identified by looking at the nodes with the more edges.\\
+MicroRNAs which have the most partners, and by then those for which the sponging with a circular RNA will remove most of the pairs of collaborative microRNAs, can be identified by looking at the nodes with the more edges.\\
 
 The user can then provide this names as input to the next step of the workflow, the circular design script.\\
 
@@ -426,9 +426,9 @@ The user can then provide this names as input to the next step of the workflow, 
 
 \subsection{Circular RNA design script}
 
-The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. The procedure to choose which microRNAs to sponge is detailed later.\\
+The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. This names are obtain in the previous section of the workflow, using Cytoscape.\\
 
-More precisly, the circular RNA design script have to mandatory input :
+More precisly, the circular RNA design script have for mandatory input :
 \begin{itemize}
 	\item a file  contening the names of the microRNAs that the user want the sponge to decoy from their original target. The names have to be the same than the one in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
 	\item a file containing a priorities for each microRNAs. Basically, the script build the sponge in a recursive way, and add as many binding site as the priority number allocated to each microRNA on each recursion. For example, for a sponge with twice the number of binding site for one microRNAs compare to the other, the file will contain the integer 2 and 1. This file is a txt file with just one integer per line, and have to be in the same order than the microRNAs they refer to.
@@ -467,17 +467,22 @@ In order to do so, the design script is implemented with rules extract from the 
 \end{itemize}
 
 As we just mentionned, the microRNAs binding sites which perform the best are the ones with a local hight content of A and U, over any other variable or predicator \cite{Urich}. \\
+
 This is probably correlated to binding site accessibility, and a low potential of forming a self-interacting secondary structure \cite{Urich}. \\
+
 To take advantage of this two features, in order to improve the efficiency of the circular RNA sponge, the script design the sponge's sequence with as many U and A as possible. \\ 
-That means that, outside the seed region, where a strict complementarity is required, or in the additional 3' pairing region (cf above), the sequence is write with U or A. \\ A cognate problem is that some proteins target and bind some AU rich sequences, known as AREs \cite{AREs}. However, since this AREs sequences contain some A \cite{AREs}, the safest option is to specify a U prior to an A when writing the sponge's sequence, when no other specific nucleotides is required for complementarity between the sponge and the microRNA. \\
+
+That means that, outside the seed region, where a strict complementarity is required, or in the additional 3' pairing region (cf above), the sequence is write with U or A. \\
+
+A cognate problem is that some proteins target and bind some AU rich sequences, known as AREs \cite{AREs}. However, since this AREs sequences contain some A \cite{AREs}, the safest option is to specify a U prior to an A when writing the sponge's sequence, when no other specific nucleotides is required for complementarity between the sponge and the microRNA. \\
 
 Each binding site is terminated by an additional number of nucleotides, in order to separate its seed from the seed of the following binding site by the distance of cooperativity, as define in \cite{coop}. The distance of cooperativity is the distance between the two seed, distance which insure that the two microRNAs will coopere to bind and exert their translational repression on a messenger RNA \cite{coop}.\\
+
 The distance of cooperativity is set by default to 17, but can be specified by an additional parameters when running the script.\\
 
 The binding sites for one microRNA are organized in cluster by the design script, considering the observation that Ago2 shuttles between adjacent target and then that neighboring sites could cooperate to retain the Ago2-miRNA complex.\cite{cluster}. \\
 
 During the recursive call, the design script build the clusters by adding as many binding site to the cluster as the priority number allocated to this microRNA. The recursive call is interrupt when the limit size (set by default to 300, but can be specified), is about to be exceeded by the addition of a new binding site.\\
-
 
 \begin{figure}[H]
 	\centering
@@ -485,13 +490,11 @@ During the recursive call, the design script build the clusters by adding as man
 	\caption{Schema of the circular RNA's construction. During the recursive call, the function add on each cluster of microRNA' binding site, as many binding site as the priority number for this microRNA, until the limit size is about to be exceeded. Please take note that the addition of the binding sites is done in a iterative way.}
 \end{figure}
 
-
 After this, the design script compute the minimum free energy of the circular RNA for every arrangement of clusters of binding sites in the sequence, and select the sequence of the circular RNA with the lowest minimum free energy for the output. \\
 
-
-
 Finaly, a pdf report with the sequence of the circular sponge is output by the design script. This pdf report details and justifies every step of the design to the user (organization of the binding site in cluster, the design rich in U, etc).\\
-This pdf report also provide quality controls in the form of miranda alignments. In this section are exposed the 3 best alignments (if they exists) for each cluster against every human microRNAs. The script is provide with the file mature.fa, a fasta format sequences of all mature miRNA sequences, download from miRbase in may 2017.\\
+
+This pdf report also provide quality controls in the form of miRanda alignments\cite{miranda}. In this section are exposed the 3 best alignments (if they exists) for each cluster against every human microRNAs. The script is provide with the file mature.fa, a fasta format sequences of all mature miRNA sequences, download from miRbase in may 2017.\\
 
 Each alignments have for title the name of the microRNA performing the alignment, and the name of the microRNA for which the cluster has been design. \\
 \begin{figure}[H]
