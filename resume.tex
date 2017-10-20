@@ -311,23 +311,23 @@ The plot does not show a perfect separation of tumor from normal samples as it s
 
 \begin{figure}[H]
 	\centering
-	\subfloat[Scatterplot where the distance between sample is a projection of the log2 fold change distance, for Melanoma cancer data, between late melanoma and early melanoma.]{\includegraphics[width=0.49\textwidth]{Rplot_melanoma.pdf}\label{fig:f1}}
+	\subfloat[Projection of the fold change between normal early melanoma cells and late melanoma]{\includegraphics[width=0.49\textwidth]{Rplot_melanoma.pdf}\label{fig:f1}}
 	\hfill
-	\subfloat[Scatterplot where the distance between sample is a projection of the log2 fold change distance, for Colorectal cancer data, between normal adjacent and cancer cells.]{\includegraphics[width=0.49\textwidth]{Rplot_collorectal_cancer.pdf}\label{fig:f2}}
+	\subfloat[Projection of the fold change between normal cells and tumor cells for colorectal cancer.]{\includegraphics[width=0.49\textwidth]{Rplot_collorectal_cancer.pdf}\label{fig:f2}}
 	\caption{Comparison of the projection fold change distance between melanoma sample and colorectal cancer after a differential expression analysis. The scatterplot of the colorectal cancer show the expected output for this analysis, with a good separation of the two groups.}
 \end{figure}
 
 \subsection{Feature selection using randomized lasso}
 
-The feature selection method employed was the Stability Selection \cite{stability}, a method based on numerous subsampling of the data set - here, different samples - with different subsets of feature - here, the genes -, in combination with a method of feature selection.
+The feature selection method employed was the Stability Selection \cite{stability}, a method based on numerous subsampling of the data set - here, different samples - with different subsets of feature - here, the genes -, in combination with a method of feature selection.\\
 
-This different subsampling are then aggregated, and a ranking is produced using the features selection method retain. This Stability approach perform well in dataset with a lot of correlation in the data \cite{stability}, assuming that the model is sparse - meaning that only a few genes are responsible for the difference between the two conditions-.
+This different subsampling are then aggregated, and a ranking is produced using the features selection method retain. This Stability approach perform well in dataset with a lot of correlation in the data \cite{stability}, assuming that the model is sparse - meaning that only a few genes are responsible for the difference between the two conditions-.\\
 
-This framework of stability selection has already been used in biology\cite{tigress}, and is implemented for the lasso method inside the scikit learn library\cite{scikit} under the name of RandomizedLasso, a method which has already been deployed to identify cancer driver genes\cite{randomlasso}.
+This framework of stability selection has already been used in biology\cite{tigress}, and is implemented for the lasso method inside the scikit learn library\cite{scikit} under the name of RandomizedLasso, a method which has already been deployed to identify cancer driver genes\cite{randomlasso}.\\
 
-To test this selection of gene, a random forest classifier \cite{springer} has been trained using only this selection of genes as variable, and the error of classification has been plot (see below).
+To test this selection of gene, a random forest classifier \cite{springer} has been trained using only this selection of genes as variable, and the error of classification has been plot (see below).\\
 
-The reason for choosing a random forest classifier is its reliability and the fact that they require less tuning in comparison to other classification method\cite{springer}. This make them ideal to test a selection of genes in a repetitive manner inside a workflow.
+The reason for choosing a random forest classifier is its reliability and the fact that they require less tuning in comparison to other classification method\cite{springer}. This make them ideal to test a selection of genes in a repetitive manner inside a workflow.\\
 
 Nonetheless, the plotting of the classification error, for the whole melanoma data, but also for subtypes\cite{TGCA} (NRAS, BRAF), did not allow to think that the genes selection was pertinent (cf figure).
 
@@ -345,9 +345,9 @@ The current workflow keep the same structure for the remaining steps, and will b
 
 \section{Current workflow}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
-	{\includegraphics[width=0.8\textwidth]{Final_Workflow.png}}
+	{\includegraphics[width=0.85\textwidth]{Final_Workflow.png}}
 	\caption{Schematic representation of the final workflow}
 \end{figure}
 
@@ -359,7 +359,7 @@ To illustrate the current workflow, we will create a sponge in the context of a 
 
 In order to do so, we will use some of the top genes differentially expressed between the normal condition and the tumor condition.\\
 
-Of course, while this reduced set of genes is sufficient to distinguish between the two condition (see scatterplot with the top12 genes below), they are not necessary responsible for the differences in the phenotype between the normal adjacent cell and the tumor cells, and promoting the expression of genes down-regulated in the cancerous cells will not necessary end in a reversion of the phenotype of the cancerous cells into normal cells (see conclusion for further details and discussions).\\
+Of course, while this reduced set of genes is sufficient to distinguish between the two condition (see scatterplot with the top12 genes below), they are not necessary responsible for the differences in the phenotype between the normal adjacent cell and the tumor cells, and promoting the expression of genes down-regulated in the cancerous cells will not necessary end in a reversion of the phenotype of the cancerous cells into normal cells.\\
 
 Such a diagnostic would require more investigation, using ontologies and literature for that cancer\cite{colorectal}. Here we select this genes for illustration purpose. A normal use of the workflow would rely on the expertise of the user and that the user provide a set of genes for which he want to promote the expression.\\
 
@@ -578,7 +578,7 @@ Finally, the script allow to refine the design of the circular RNA sponge, throu
 
 \begin{figure}[H]
 	\centering
-	{\includegraphics[width=0.9\textwidth]{Final_Workflow.png}}
+	{\includegraphics[width=0.85\textwidth]{Final_Workflow.png}}
 	\caption{Schematic representation of the final workflow}
 \end{figure}
 
