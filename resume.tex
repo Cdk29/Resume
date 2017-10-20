@@ -276,7 +276,7 @@ The feature selection is a field of the machine learning domain\cite{springer}, 
 
 To check the accuracy of such selection, a random forest classifier \cite{springer} has been trained with this set of genes, and the error of classification has been plot.\\
 
-This approach have its limits, especially regarding the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control will be perform, one per approach, for both the differential expression analysis and the feature selection.
+This two approach have their limits, especially considering the complexity and heterogeneity of cancers\cite{TGCA, complexity}, and the uncertainty behind the causes of the differential expression. For this reason, two control have been performed, one per approach, for both the differential expression analysis and the feature selection.
 
 
 \begin{figure}[H]
@@ -293,14 +293,13 @@ This list of genes is then used to interrogate the UCSC's Xena database\cite{Xen
 
 Here, we collected the level of expression in association with the phenotype [pathologic\_stage], to sort the samples into two groups : early stage of melanoma (Stage 0 to IA-IB), and late stage of melanoma (Stage IIIA and B and IV)\cite{joint}. \\
 
-The same procedure has also been done for two subpopulation of the Melanoma cancer\cite{TGCA}, by associating the phenotype [pathologic\_stage] with specific mutation in the gene BRAF and NRAS \cite{TGCA}. The goal was to test the influence of the heterogeneity inside the cutaneous melanoma on the gene selection later in the workflow, the classification into four subtypes by the TGCA being also presented as a guide for clinical decision-making for targeted therapies\cite{TGCA}.\\
-
 \begin{figure}[H]
 	\centering
 	{\includegraphics[width=1\textwidth]{Xena_melanoma.pdf}}
 	\caption{Web visualization of the level of gene expression, associated with the phenotype [pathalogic\_stage]. This levels of expression can be then download.}
 \end{figure}
 
+The same procedure has also been done for two subpopulation of the Melanoma cancer\cite{TGCA}, by associating the phenotype [pathologic\_stage] with specific mutation in the gene BRAF and NRAS \cite{TGCA}. The goal was to test the influence of the heterogeneity inside the cutaneous melanoma on the gene selection later in the workflow, the classification into four subtypes by the TGCA being also presented as a guide for clinical decision-making for targeted therapies\cite{TGCA}.\\
 
 \subsection{Differential expression analysis}
 
