@@ -268,13 +268,11 @@ A solution is to perform a differential expression analysis on this subset of ge
 
 As we stated in the introduction, the repression exert by microRNAs can result in a destabilization of the mRNA target and a change in the level of expression, but microRNA-inhibited messenger RNAs may have their level unchanged, as this point remains illusive in the literature\cite{cancer}.\\
 
-Here, we do not presume that the change in level of expression of mRNA is caused by the change in the expression of microRNAs, as it occur in cancer\cite{cancer}, even if it's a possibility. \\
-
-We are looking for genes which should be good candidate to have their expression promoted using a circular sponge, in the context of a RNA therapy.\\
+Here, we do not presume that the change in level of expression of mRNA is caused by the change in the expression of microRNAs, as it occur in cancer\cite{cancer}, even if it's a possibility. We are looking for genes which should be good candidates to have their expression promoted using a circular sponge, in the context of a RNA therapy.\\
 
 A transversal and complementary approach to the differential expression analysis is a feature selection, operated on the genes.\\
 
-The feature selection is a field of the machine learning domain\cite{springer}, dedicated to select feature among a set of data, in order to improve the generalization of models, or get a better understanding of the features and their relationship to the response variables\cite{springer}. It is this last aspect which we interest us, trying to select genes to discriminate between the early and late stage of the melanoma.\\
+The feature selection is a field of the machine learning domain\cite{springer}, dedicated to select features among a set of data, in order to improve the generalization of models, or get a better understanding of the features and their relationship to the response variables\cite{springer}. It is this last aspect which interest us, select genes to discriminate between the early and late stage of the melanoma.\\
 
 To check the accuracy of such selection, a random forest classifier \cite{springer} has been trained with this set of genes, and the error of classification has been plot.\\
 
