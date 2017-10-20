@@ -390,7 +390,7 @@ While this triplexes are different biochemical entities, they can not cumulate t
 
 This introduce a bias in the following steps of the worfklow when we aim to find which microRNAs have the most partners. A microRNAs involved in several redundant triplexes will be seen as with multiples partners, while its sponging will only remove the repression of one pair of cooperatives microRNAs on the same molecule of messenger RNA.\\
 
-This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape \cite{cytoscape}, the following set of the worflow.
+This executable, which query both the web instance of the triplexRNA and a local instance of it, ouput a sif file format. This sif file contain all the canonical triplexes for the list of genes (see material and methods), and is meant to be used as input for the software Cytoscape\cite{cytoscape}, the following steo of the worflow.
 
 
 \subsection{Cytoscape visualization}
@@ -426,7 +426,7 @@ The user can then provide this names as input to the next step of the workflow, 
 
 \subsection{Circular RNA design script}
 
-The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. This names are obtained in the previous section of the workflow, using Cytoscape.\\
+The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoys from theirs original target. This names are obtained in the previous section of the workflow, using Cytoscape.\\
 
 More precisly, the circular RNA design script have for mandatory input :
 \begin{itemize}
