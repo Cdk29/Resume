@@ -314,7 +314,7 @@ The plot does not show a perfect separation of tumor from normal samples as it s
 	\subfloat[Projection of the fold change between normal early melanoma cells and late melanoma]{\includegraphics[width=0.49\textwidth]{Rplot_melanoma.pdf}\label{fig:f1}}
 	\hfill
 	\subfloat[Projection of the fold change between normal cells and tumor cells for colorectal cancer.]{\includegraphics[width=0.49\textwidth]{Rplot_collorectal_cancer.pdf}\label{fig:f2}}
-	\caption{Comparison of the projection fold change distance between melanoma sample and colorectal cancer after a differential expression analysis. The scatterplot of the colorectal cancer show the expected output for this analysis, with a good separation of the two groups.}
+	\caption{Multidimensional scaling plot of distances, using the plotMDS() function from edgeR\cite{edger}. The scatterplot of the colorectal cancer show the expected output for this analysis, with a good separation of the two groups.}
 \end{figure}
 
 \subsection{Feature selection using randomized lasso}
@@ -372,7 +372,7 @@ Such a diagnostic would require more investigation, using ontologies and literat
 	\hfill	
 	\subfloat[Projection of the fold change between normal cells and tumor cells for colorectal cancer, using only the top 12 of the differentially expressed  genes.]{\includegraphics[width=0.49\textwidth]{Rplot_12_genes.pdf}\label{fig:f2}}
 	
-	\caption{Multidimensional scaling plot of distances, using the plotMDS() function from edgeR. In the context of using a reduced number of genes to distinguish between the two conditions (normal adjacent cells and cancerous cells), we observe a good separation with the top 12 of the differentially expressed genes.}
+	\caption{Multidimensional scaling plot of distances, using the plotMDS() function from edgeR\cite{edger}. In the context of using a reduced number of genes to distinguish between the two conditions (normal adjacent cells and cancerous cells), we observe a good separation with the top 12 of the differentially expressed genes.}
 	
 \end{figure}
 
