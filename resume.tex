@@ -244,13 +244,13 @@ The KEGG pathways are also encode in the base in the form of a list of genes, an
 
 The problem is : as we want to promote the expression of a pathways in a biological condition of interest, and since the KEGG pathways are only encode as a list of genes inside the triplex RNA, which does not tell us which gene are down-regulated or which are post-transcriptionaly repressed by microRNAs in the condition of interest, how to know which genes should have their expressions promoted to up-regulate the pathways ?\\
 
-The approach retained was to performed a differential expression analysis for the set of genes inside the pathways, between a disease condition and a normal or early stage condition, to find which genes should have their expression promoted, in the context of RNA therapy for the disease. This genes can have their level of expression down-regulated because microRNA-inhibited mRNAs can have their level lowered, in the context of a deregulation of the microRNAs networks in disease\cite{cancer}, or their low level of expression can be promoting the disease. In both case, promoting their expression with a microRNA circular sponge make sens in the context of a RNA therapy.\\ 
+The approach retained was to performed a differential expression analysis for the set of genes inside the pathways, between a disease condition and a normal or early stage condition, to find which genes should have their expression promoted, in the context of RNA therapy for the disease. This genes can have their level of expression down-regulated because microRNA-inhibited messenger RNAs can have their level lowered, in the context of a deregulation of the microRNAs networks in disease\cite{cancer}, or their low level of expression can be promoting the disease. In both case, promoting their expression with a microRNA circular sponge make sens in the context of a RNA therapy.\\ 
 
 Considering that circular RNA can be potential RNA therapy tools, are already been correlated with the survival of patients and can potentially contain the proliferation of HCC, to test the possibility to up-regulate a pathways of interest a focus on the Melanoma Cancer was done.\\
 
-The choice of Melanoma cancer has been done considering that a RNA therapy including the circular RNA could be easily test in cell culture. For that reason, the project also focused on the late and early stage of Melanoma for a demonstration and construction of the workflow, since a change in the phenotype of the cancerous cells would be a feature easily observable in cell culture.\\
+The choice of Melanoma cancer has been done considering that a RNA therapy including the circular RNA could be easily test in cell culture. By then, the project also focused on the late and early stage of Melanoma for a demonstration and construction of the workflow, since a change in the phenotype of the cancerous cells would be a feature easily observable in cell culture.\\
 
-For this reasons, we aim to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway, for each stage.\\
+For this reasons, we also aimed to find genes differentially expressed between early and late stages of the melanoma cancer, using the Xena database\cite{Xena} to obtain the level of expression of the genes composing the KEGG Melanoma pathway, for each stage of the Melanoma.\\
 
 
 
@@ -260,7 +260,7 @@ For this reasons, we aim to find genes differentially expressed between early an
 
 \section{First workflow}
 
-Af we stated before, our goal was to investigate the design of a workflow to upregulate a biological pathways of interest with a circular RNA sponge.\\
+Af we stated before, our goal was to investigate the design of a workflow to up-regulate a biological pathways of interest with a circular RNA sponge.\\
 
 Our concern is that KEGG pathways are only implemented as a list of genes involved in disease, inside the triplexRNA database\cite{triplex}, without any further indication on their involvement. We don't know from the base if this genes are down-regulated, up-regulated, or inhibited in the biological conditions of interest.\\
 
