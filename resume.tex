@@ -152,10 +152,8 @@
 	\begin{minipage}{0.60\linewidth}
 		\vspace{5pt}
 		\begin{abstract} 
-			This document is a concise presentation of the work accomplished during my master's degree internship at the Rostock SBI department. The project was to develop a computational workflow which design a circular RNA, in order to sponge microRNAs of interest. \\ The core material was the triplexRNA database, a database of cooperative microRNAs. \\
-			After a quick introduction, we will see first how the design script proceed to build the circular RNA. 
-			After this, we will detail of the first workflow and its results, as well as the second workflow. 
-			Finally, the conclusion will discuss the limits of the first and second workflow.
+			This document is a presentation of the work accomplished during my master's degree internship at the Rostock SBI department. The project aimed to develop a computational workflow to design a circular RNA, in order to sponge microRNAs and promote the expression of genes of interest. The core material was the triplexRNA database, a database of cooperative microRNAs. \\
+			After a quick introduction, we will detail the structure of the first workflow and its results, as well as the structure of the current workflow. Finally, we will see how the design script proceed to build the circular RNA.
 		\end{abstract}
 	\end{minipage}
 \end{titlepage}
@@ -173,18 +171,19 @@
 	
 \section{MicroRNAs}
 
-MicroRNAs are 20-24 nt RNA molecules, which can form a complex with AGO family proteins members and other ribonucleoprotein , to exert a post-transcriptional repression \cite{network, site, Urich, cancer}.  This complex is design as microRNA-induced silencing complex (miRISC)\cite{cancer}.
+MicroRNAs are 20-24 nt RNA molecules, which can form a complex with AGO family proteins members and other ribonucleoproteins , to exert a post-transcriptional repression\cite{network, site, Urich, cancer}. \\ This complex is design as microRNA-induced silencing complex (miRISC)\cite{cancer}.
 
-This repression is exert by a inhibition of the translation's initiation, and  eventually, by a messenger RNA destabilization \cite{site, cancer}. \\ 
+This repression is exert by an inhibition of the translation's initiation, and  eventually, by a messenger RNA destabilization \cite{site, cancer}.\\ 
 
-The repression is mediated by the binding of the complex miRISC to the target messenger RNA, the complementarity between the microRNA sequence and the messenger RNA being the vector of recognition of the target and of the specificity of the interaction\\
+The repression is mediated by the binding of the complex miRISC to the target messenger RNA, the complementarity between the microRNA sequence and the messenger RNA being the vector of recognition of the target and of the specificity of the interaction.\\
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	{\includegraphics[width=1\textwidth]{microRNA.png}}
 	\caption{Schematic representation of the binding of a microRNA on a messenger RNA, for a 7mer site. Illustration taken from \cite{Urich}}
 \end{figure}
-In that sequence, the most important is the "seed region" (see the figure above for a schematic representation), a complementarity in this region being enough to for the complex to bind the messenger RNA, and most of the time, mandatory. This seed region is located in the 5' region of the microRNA, and could be a 6, 7 or 8mer \cite{site,Urich}. By extension, the seed region is also in the 3' region of the microRNA binding site.
+
+In that sequence, the most important subsequence is the "seed region" (see the Figure 1.1), a complementarity in this region being enough to get the complex bind the messenger RNA, and most of the time, mandatory.\cite{Urich, site} This seed region is located in the 5' region of the microRNA, and could be a 6, 7 or 8mer \cite{site,Urich}. By extension, the seed region is also in the 3' region of the microRNA binding site.\\
 
 Nonetheless, despite this evidences, the microRNAs' network is still poorly understood \cite{network,cancer}. The reason includes : the functional redundancy of the microRNAs, the lack of clear phenotype when one microRNA is knock-down, the combinational of the repression, etc\cite{network,cancer}. 
 Their levels of expression, like many non coding RNA, is altered in disease, including cancer \cite{cancer}.
