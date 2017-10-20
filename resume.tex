@@ -430,8 +430,8 @@ The circular RNA design script is write in Python, is executed in command line, 
 
 More precisly, the circular RNA design script have for mandatory input :
 \begin{itemize}
-	\item a file  contening the names of the microRNAs that the user want the sponge to decoy from their original target. The names have to be the same than the one in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
-	\item a file containing a priorities for each microRNAs. Basically, the script build the sponge in a recursive way, and add as many binding site as the priority number allocated to each microRNA on each recursion. For example, for a sponge with twice the number of binding site for one microRNAs compare to the other, the file will contain the integer 2 and 1. This file is a txt file with just one integer per line, and have to be in the same order than the microRNAs they refer to.
+	\item a file containing the names of the microRNAs that the user want the sponge to decoy from their original messenger RNA target. The names have to be the same than the one in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
+	\item a file containing a priority number for each microRNAs. Basically, the script build the sponge in a recursive way, and add as many binding site as the priority number allocated to each microRNA on each recursion (see Figure 2.9). For example, for a desired sponge with twice the number of binding site for one microRNAs compare to the other, the file will contain the integer 2 and 1. This file is a txt file with just one integer per line, and have to be in the same order than the microRNAs they refer to.
 	
 \end{itemize}
 
