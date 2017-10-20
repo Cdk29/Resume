@@ -426,7 +426,7 @@ The user can then provide this names as input to the next step of the workflow, 
 
 \subsection{Circular RNA design script}
 
-The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. This names are obtain in the previous section of the workflow, using Cytoscape.\\
+The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoy from theirs original target. This names are obtained in the previous section of the workflow, using Cytoscape.\\
 
 More precisly, the circular RNA design script have for mandatory input :
 \begin{itemize}
@@ -505,29 +505,13 @@ Each alignments have for title the name of the microRNA performing the alignment
 
 This allow to check easily if the best alignment is performed by the microRNAs for which the binding site was created, and make sure that the binding site will not be bound by another microRNAs. Or even worse, to ensure that no microRNA is susceptible to trigger a Ago2 mediated cleavage of the sponge.\\
 
-In such case, an override procedure is implement. Providing a txt file with a sequence, the user can redo the whole design process with a binding sequence specified for one or more microRNAs. The construction of the circular sponge is then redo in the same recursive way, except for the creation of the specified binding site, and then the quality control are reperformed and a pdf report is recreated. 
-
+In such case, an override procedure is implement. Providing a txt file with a sequence, the user can redo the whole design process with a binding sequence specified for one or more microRNAs. The construction of the circular sponge is then redo in the same recursive way, except for the creation of the specified binding site, and then the quality control are reperformed and a pdf report is recreated.\\
 
 Since all the quality control are performed again, this allow the user to refine the construction of the sponge, especially in the case of one miss design, as describe above.\\
 
 Most of the case of competition by another microRNA are due to a U:G wobble, an allowance between a G in the microRNA's sequence and a U in the sequence of the circular RNA (there is a good example in the figure 2.3), the probability of such an event beeing incredibly improved by the design rich in U of the sponge.\\
 
 In that case the pdf output advise to first replace this problematic U by a A, if possible, to keep the low probability of the binding site to form a self secondary structure.\\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \chapter{Conclusion and Perspectives}
 \startcontents[chapters]
