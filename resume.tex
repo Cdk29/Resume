@@ -428,16 +428,16 @@ The user can then provide this names as input to the next step of the workflow, 
 
 The circular RNA design script is write in Python, is executed in command line, and take as argument, not genes names, but the microRNAs' names that the sponge should decoys from theirs original target. This names are obtained in the previous section of the workflow, using Cytoscape.\\
 
-More precisly, the circular RNA design script have for mandatory input :
+More precisely, the circular RNA design script have for mandatory input :
 \begin{itemize}
-	\item a file containing the names of the microRNAs that the user want the sponge to decoy from their original messenger RNA target. The names have to be the same than the one in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
+	\item a file containing the names of the microRNAs that the user want the sponge to decoy from their original messenger RNA target. The names have to be the same than the ones in the triplexRNA database. This file is a txt file with just the name of the microRNAs, one per line.
 	\item a file containing a priority number for each microRNAs. Basically, the script build the sponge in a recursive way, and add as many binding site as the priority number allocated to each microRNA on each recursion (see Figure 2.9). For example, for a desired sponge with twice the number of binding site for one microRNAs compare to the other, the file will contain the integer 2 and 1. This file is a txt file with just one integer per line, and have to be in the same order than the microRNAs they refer to.
 	
 \end{itemize}
 
 The script will then query the triplexRNA database, using the provided names to get the mimat IDs which identify this microRNA in the database. This ID is then used to query Mirbase, to get the sequence of the microRNA. \\
 
-There is several reasons to this. First of all, while the sequences of the microRNAs are encode inside the triplexRNA database, the orientation of the strand is not indicate (5' and 3' extremity), and this step is then a security control, assuring the sequence of the microRNA is in the right orientation.\\
+There is several reasons to this. First of all, while the sequences of the microRNAs are encode inside the triplexRNA database, the orientation of the strand is not indicate (5' and 3' extremity), and this step is then a security control, assuring that the sequence of the microRNA is in the right orientation.\\
 
 Also, the name of some microRNAs can be different between Mirbase and the triplexRNA, depending on their respective update. For example, most of the microRNAs have the mention 5p or 3p in their name, indicating from which part of the hairpin they come from, a mention sometimes absent from the name inside the triplexRNA database. This step is then a disambiguation phase. 
 
@@ -449,30 +449,30 @@ Also, the name of some microRNAs can be different between Mirbase and the triple
 	\caption{Details of the request done by the circular RNA design script.}
 \end{figure}
 
-Once the sequences of the microRNAs are obtain by the circular design script, it will use them to build the most efficient binding site possible for each of the microRNAs. Those building sites, one per microRNAs, will be then repeat on the circular sponge, separated by nucleotides according to another parameter, the distance of cooperativity\cite{coop}. \\
+Once the sequences of the microRNAs are obtained by the circular design script, it will use them to build the most efficient binding site possible for each of the microRNAs. Those binding sites, one per microRNAs, will be then repeat on the circular sponge, separated by nucleotides according to another parameter, the distance of cooperativity\cite{coop}. \\
 
 In order to do so, the design script is implemented with rules extract from the scientific literature :
 
 \begin{itemize}
-	\item a A is systematically put in first position (in 5') of the microRNA's binding site. There is an overrepresentation of conserved adenosines flanking the seed complementary sites\cite{Aanchor}, among other data suggesting that a site with a A in first position outperform the others one, including the one with a complementary nucleotide to the microRNAs\cite{Urich}. 
+	\item a A is systematically put in first position (in 5') of the microRNA's binding site. There is an over-representation of conserved adenosine flanking the seed complementary sites\cite{Aanchor}, among other data suggesting that a site with a A in first position outperform the others one, including the one with a complementary nucleotide to the microRNAs\cite{Urich}. 
 	
 	\item the seed region (from the 2nd to the 8th nt, cf introduction) is build by inserting complementary nucleotides to the microRNAs' ones, forming a "8-mer" site. See \cite{Urich, site} for further details and representation.
 	
-	\item a A is put in the ninth position of the binding site, because there is an overrepresentation of conserved adenosines flanking the seed complementary sites\cite{Aanchor}, and because the microRNAs binding sites which perform the best are the ones with a local hight content of Adenine (A) and Uracile (U), over any other variable or predicator \cite{Urich}.
+	\item a A is put in the ninth position of the binding site, because there is an over-representation of conserved adenosine flanking the seed complementary sites\cite{Aanchor}, and because the microRNAs binding sites which perform the best are the ones with a local hight content of Adenine (A) and Uracile (U), over any other variable or predicator \cite{Urich}.
 	
 	\item the 12th from 10th nucleotides are not complementary to the microRNAs', and U and A if possible. The aim is to avoid any Ago2 mediated cleavage of the circular RNA, cleavage which occur in case of near perfect complementarity between the microRNA sequence and the binding site \cite{cancer}. This nucleotide are U, or A if not possible.
 	
-	\item the nucleotides from 13 to 16 (included, so four in total) are complementary to the \-microRNAs' one. The reason is that Watson-Crick pairing to four contiguous nucleotides produce an additionnal pairing in 3'\cite{site} and that most downregulation is associated to this additionnal pairing if it start at the 13th position \cite{site}, additionnal downregulation which can be translate as a stronger binding of the microRNA on the binding site\cite{site}.
+	\item the nucleotides from 13 to 16 (included, so four in total) are complementary to the \-microRNAs' one. The reason is that Watson-Crick pairing to four contiguous nucleotides produce an additional pairing in 3'\cite{site} and that most down-regulation is associated to this additional pairing if it start at the 13th position \cite{site}, additional down-regulation which can be translate as a stronger binding of the microRNA on the binding site\cite{site}.
 	
 \end{itemize}
 
-As we just mentionned, the microRNAs binding sites which perform the best are the ones with a local hight content of A and U, over any other variable or predicator \cite{Urich}. \\
+As we just mentioned, the microRNAs binding sites which perform the best are the ones with a local hight content of A and U, over any other variable or predicator \cite{Urich}. \\
 
 This is probably correlated to binding site accessibility, and a low potential of forming a self-interacting secondary structure \cite{Urich}. \\
 
 To take advantage of this two features, in order to improve the efficiency of the circular RNA sponge, the script design the sponge's sequence with as many U and A as possible. \\ 
 
-That means that, outside the seed region, where a strict complementarity is required, or in the additional 3' pairing region (cf above), the sequence is write with U or A. \\
+That means that, outside the seed region, where a strict complementarity is required, and in the additional 3' pairing region (cf above), the sequence is write with U or A. \\
 
 A cognate problem is that some proteins target and bind some AU rich sequences, known as AREs \cite{AREs}. However, since this AREs sequences contain some A \cite{AREs}, the safest option is to specify a U prior to an A when writing the sponge's sequence, when no other specific nucleotides is required for complementarity between the sponge and the microRNA. \\
 
