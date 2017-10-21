@@ -492,7 +492,7 @@ During the recursive call, the design script build the clusters by adding as man
 
 After this, the design script compute the minimum free energy of the circular RNA for every arrangement of clusters of binding sites in the sequence, and select the sequence of the circular RNA with the lowest minimum free energy for the output. \\
 
-Finaly, a pdf report with the sequence of the circular sponge is output by the design script. This pdf report details and justifies every step of the design to the user (organization of the binding site in cluster, the design rich in U, etc).\\
+Finally, a pdf report with the sequence of the circular sponge is output by the design script. This pdf report details and justifies every step of the design to the user (organization of the binding site in cluster, the design rich in U, etc).\\
 
 This pdf report also provide quality controls in the form of miRanda alignments\cite{miranda}. In this section are exposed the 3 best alignments (if they exists) for each cluster against every human microRNAs. The script is provide with the file mature.fa, a fasta format sequences of all mature miRNA sequences, download from miRbase in may 2017.\\
 
@@ -503,13 +503,13 @@ Each alignments have for title the name of the microRNA performing the alignment
 	\caption{Example of one of the alignment found in the pdf report.}
 \end{figure}
 
-This allow to check easily if the best alignment is performed by the microRNAs for which the binding site was created, and make sure that the binding site will not be bound by another microRNAs. Or even worse, to ensure that no microRNA is susceptible to trigger a Ago2 mediated cleavage of the sponge.\\
+This allow to easily check if the best alignment is performed by the microRNA for which the binding site was created, and make sure that the binding site will not be bound by another microRNAs. Or even worse, to ensure that no microRNA is susceptible to trigger a Ago2 mediated cleavage of the sponge.\\
 
 In such case, an override procedure is implement. Providing a txt file with a sequence, the user can redo the whole design process with a binding sequence specified for one or more microRNAs. The construction of the circular sponge is then redo in the same recursive way, except for the creation of the specified binding site, and then the quality control are reperformed and a pdf report is recreated.\\
 
-Since all the quality control are performed again, this allow the user to refine the construction of the sponge, especially in the case of one miss design, as describe above.\\
+Since all the quality control are performed again, this allow the user to refine the construction of the sponge, especially in the case of a miss design, as describe above.\\
 
-Most of the case of competition by another microRNA are due to a U:G wobble, an allowance between a G in the microRNA's sequence and a U in the sequence of the circular RNA (there is a good example in the figure 2.3), the probability of such an event beeing incredibly improved by the design rich in U of the sponge.\\
+Most of the case of competition by another microRNA are due to a U:G wobble, an allowance between a G in the microRNA's sequence and a U in the sequence of the circular RNA (there is a good example in the figure 2.3), the probability of such an event being improved by the design rich in U of the sponge.\\
 
 In that case the pdf output advise to first replace this problematic U by a A, if possible, to keep the low probability of the binding site to form a self secondary structure.\\
 
@@ -561,7 +561,7 @@ The workflow finally provide a design script to automatize the construction of a
 
 The design script allow the user to specify parameters : the list of microRNAs to be decoyed, a list of priority which is an intuitive way to prioritize the sponging of some microRNAs, and a maximum size according to the user synthesis facilities. The size distance between the seed can be specified to adapt to new scientific evidence.\\
 
-Finally, the script allow to refine the design of the circular RNA sponge, through a repetition of execution of the design script. Since the alignments are perform again, and that the microRNA binding site sequence can be specified manually, the user can adjust the sequence of the binding sites according to the results of the alignments on every steps.\\
+Finally, the script allow to refine the design of the circular RNA sponge, through a repetition of executions of the design script. Since the alignments are performed again, and that the microRNA binding site sequence can be specified manually, the user can adjust the sequence of the binding sites according to the results of the alignments on every steps.\\
 
 \begin{figure}[H]
 	\centering
